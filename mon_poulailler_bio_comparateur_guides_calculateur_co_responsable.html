@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Poulailler Bio - Comparateur, Guides & Calculateur Éco-Responsable</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Google Fonts: Plus Jakarta Sans & Lora -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Custom Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        sauge: {
+                            50: '#F4F7F4',
+                            100: '#E6EFE6',
+                            200: '#C8DCC9',
+                            600: '#648A66',
+                            700: '#4D6F4F',
+                        },
+                        foret: {
+                            500: '#2E5A44',
+                            800: '#1B3C2B',
+                            900: '#122B1E',
+                        },
+                        bois: {
+                            50: '#FAF7F2',
+                            100: '#F3ECE2',
+                            200: '#E5D6C3',
+                            700: '#7A5C43',
+                            800: '#5A412E',
+                        },
+                        terracotta: {
+                            500: '#E27A56',
+                            600: '#D96B43',
+                            700: '#B8522E',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        serif: ['"Lora"', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #F3ECE2;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #4D6F4F;
+            border-radius: 4px;
+        }
+        .cta-shadow {
+            box-shadow: 0 10px 25px -5px rgba(217, 107, 67, 0.4);
+        }
+        .cta-shadow:hover {
+            box-shadow: 0 15px 30px -5px rgba(217, 107, 67, 0.5);
+        }
+        .card-shadow {
+            box-shadow: 0 10px 30px -8px rgba(27, 60, 43, 0.08);
+        }
+        .card-shadow:hover {
+            box-shadow: 0 20px 40px -10px rgba(27, 60, 43, 0.15);
+        }
+        .badge-pulse {
+            animation: pulse-border 2s infinite;
+        }
+        @keyframes pulse-border {
+            0%, 100% { border-color: rgba(217, 107, 67, 0.8); }
+            50% { border-color: rgba(217, 107, 67, 0.2); }
+        }
+    </style>
+</head>
+<body class="bg-bois-50 text-slate-800 font-sans antialiased selection:bg-terracotta-500 selection:text-white">
+
+    <div class="bg-foret-900 text-bois-100 text-xs sm:text-sm py-2 px-4 text-center font-medium flex items-center justify-center gap-2 border-b border-foret-800">
+        <span class="bg-terracotta-600 text-white text-[10px] uppercase font-extrabold px-2 py-0.5 rounded-full">Guide 2026</span>
+        <span>🐔 Protégez votre poulailler des poux rouges & prédateurs. <a href="#quiz" class="underline hover:text-terracotta-500 font-bold transition">Trouver le modèle idéal en 3 clics</a></span>
+    </div>
+
+    <!-- Navigation Header -->
+    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-bois-200 transition-all shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                
+                <!-- Logo -->
+                <a href="#" class="flex items-center gap-3 group">
+                    <div class="w-11 h-11 rounded-2xl bg-foret-500 text-white flex items-center justify-center shadow-md group-hover:bg-terracotta-600 transition-colors">
+                        <i class="fa-solid fa-feather-pointed text-xl"></i>
+                    </div>
+                    <div>
+                        <span class="font-serif text-xl sm:text-2xl font-bold text-foret-900 tracking-tight block leading-none">Mon Poulailler <span class="text-terracotta-600">Bio</span></span>
+                        <span class="text-[10px] font-semibold uppercase tracking-wider text-bois-700">Guide & Élevage Familial</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Nav -->
+                <nav class="hidden lg:flex items-center space-x-8 font-medium text-sm text-slate-700">
+                    <a href="#comparateur" class="hover:text-foret-500 transition-colors">Comparateur</a>
+                    <a href="#quiz" class="hover:text-foret-500 transition-colors">Sélecteur Rapide</a>
+                    <a href="#top-choix" class="hover:text-foret-500 transition-colors">Top Choix 2026</a>
+                    <a href="#calculateur" class="hover:text-foret-500 transition-colors">Calculateur d'Œufs</a>
+                    <a href="#sante" class="hover:text-foret-500 transition-colors font-semibold text-foret-500 flex items-center gap-1.5">
+                        <i class="fa-solid fa-heart-pulse text-terracotta-600"></i> Santé Naturelle
+                    </a>
+                </nav>
+
+                <!-- Search & Header CTA -->
+                <div class="hidden sm:flex items-center gap-3">
+                    <div class="relative hidden xl:block">
+                        <input type="text" id="searchInput" oninput="filterBySearch()" placeholder="Rechercher un modèle..." class="w-48 pl-9 pr-3 py-2 bg-bois-100 border border-bois-200 rounded-xl text-xs focus:outline-none focus:ring-2 focus:ring-foret-500 focus:bg-white transition-all">
+                        <i class="fa-solid fa-magnifying-glass absolute left-3 top-2.5 text-slate-400 text-xs"></i>
+                    </div>
+                    <a href="#quiz" class="bg-terracotta-600 hover:bg-terracotta-700 text-white font-bold text-xs sm:text-sm px-4 py-2.5 rounded-xl cta-shadow hover:-translate-y-0.5 transition-all flex items-center gap-2">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                        <span>Trouver mon Poulailler</span>
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button onclick="toggleMobileMenu()" class="lg:hidden text-slate-700 hover:text-foret-500 p-2 rounded-lg">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden lg:hidden bg-white border-b border-bois-200 px-4 pt-2 pb-6 space-y-3">
+            <a href="#comparateur" onclick="toggleMobileMenu()" class="block py-2 text-slate-700 font-medium">Comparateur 2026</a>
+            <a href="#quiz" onclick="toggleMobileMenu()" class="block py-2 text-slate-700 font-medium">Sélecteur Rapide</a>
+            <a href="#top-choix" onclick="toggleMobileMenu()" class="block py-2 text-slate-700 font-medium">Top Choix 2026</a>
+            <a href="#calculateur" onclick="toggleMobileMenu()" class="block py-2 text-slate-700 font-medium">Calculateur d'Œufs</a>
+            <a href="#sante" onclick="toggleMobileMenu()" class="block py-2 text-foret-500 font-semibold">Santé & Phyto Animale</a>
+            <a href="#quiz" onclick="toggleMobileMenu()" class="w-full bg-terracotta-600 text-white text-center py-3 rounded-xl font-bold flex items-center justify-center gap-2">
+                <i class="fa-solid fa-wand-magic-sparkles"></i> Lancer le quiz
+            </a>
+        </div>
+    </header>
+
+    <section class="relative overflow-hidden bg-gradient-to-b from-bois-100 via-bois-50 to-white pt-10 pb-16 lg:pt-16 lg:pb-24 border-b border-bois-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Hero Left Content -->
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-sauge-100 text-foret-500 text-xs font-bold border border-sauge-200">
+                        <i class="fa-solid fa-shield-cat text-terracotta-600"></i>
+                        <span>Élevage passionné & Protection 100% anti-prédateurs</span>
+                    </div>
+
+                    <h1 class="font-serif text-3xl sm:text-5xl lg:text-6xl font-bold text-foret-900 leading-tight">
+                        Le meilleur refuge bio pour vos <span class="text-terracotta-600 underline decoration-bois-300 underline-offset-8">poules heureuses</span>.
+                    </h1>
+
+                    <p class="text-slate-600 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 font-normal leading-relaxed">
+                        Comparez les **meilleurs poulaillers écologiques**, zéro pou rouge, faciles à nettoyer au jet d'eau et conçus pour durer face aux intempéries.
+                    </p>
+
+                    <!-- CTAs -->
+                    <div class="pt-2 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+                        <a href="#quiz" class="w-full sm:w-auto bg-terracotta-600 hover:bg-terracotta-700 text-white font-bold px-8 py-4 rounded-2xl cta-shadow hover:-translate-y-0.5 transition-all flex items-center justify-center gap-3 text-base">
+                            <i class="fa-solid fa-compass text-amber-200"></i>
+                            <span>Trouver mon poulailler idéal</span>
+                        </a>
+                        <a href="#comparateur" class="w-full sm:w-auto bg-white hover:bg-bois-100 text-foret-500 font-bold px-6 py-4 rounded-2xl border border-bois-200 shadow-sm hover:shadow transition-all flex items-center justify-center gap-2 text-base">
+                            <i class="fa-solid fa-list-check"></i>
+                            <span>Voir le comparatif 2026</span>
+                        </a>
+                    </div>
+
+                    <!-- Trust Indicators -->
+                    <div class="pt-6 border-t border-bois-200 flex flex-wrap items-center justify-center lg:justify-start gap-6 text-xs sm:text-sm text-slate-600 font-medium">
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-check-circle text-foret-500 text-base"></i>
+                            <span>+15 000 éleveurs conseillés</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-shield-halved text-foret-500 text-base"></i>
+                            <span>Tests 100% Indépendants</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <div class="flex text-amber-400">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                            </div>
+                            <span class="font-bold text-slate-800">4.9/5</span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Hero Right Card Showcase -->
+                <div class="lg:col-span-5 relative">
+                    <div class="bg-white p-5 sm:p-6 rounded-3xl card-shadow border border-bois-200 space-y-4">
+                        
+                        <div class="flex items-center justify-between">
+                            <span class="bg-terracotta-600 text-white text-[11px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">⭐ Recommandé 2026</span>
+                            <span class="text-xs text-slate-500 font-semibold">Garantie 10 Ans</span>
+                        </div>
+
+                        <div class="overflow-hidden rounded-2xl bg-bois-100 relative h-64">
+                            <img src="https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?auto=format&fit=crop&w=800&q=80" alt="Poulailler Omlet Eglu Cube" class="w-full h-full object-cover">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                            <div class="absolute bottom-3 left-3 right-3 text-white flex justify-between items-end">
+                                <div>
+                                    <span class="bg-foret-500/90 text-white text-[10px] font-bold uppercase px-2 py-0.5 rounded">Plastique Recyclé</span>
+                                    <h3 class="font-serif font-bold text-lg mt-0.5">Omlet Eglu Cube Pro</h3>
+                                </div>
+                                <span class="font-bold text-amber-300 text-sm">4.9 / 5 ★</span>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-3 gap-2 text-center text-xs">
+                            <div class="bg-bois-50 p-2 rounded-xl border border-bois-200">
+                                <span class="block font-bold text-foret-900">0 Pou Rouge</span>
+                                <span class="text-[10px] text-slate-500">Parois lisses</span>
+                            </div>
+                            <div class="bg-bois-50 p-2 rounded-xl border border-bois-200">
+                                <span class="block font-bold text-foret-900">Anti-Renard</span>
+                                <span class="text-[10px] text-slate-500">Jupe en acier</span>
+                            </div>
+                            <div class="bg-bois-50 p-2 rounded-xl border border-bois-200">
+                                <span class="block font-bold text-foret-900">5 min</span>
+                                <span class="text-[10px] text-slate-500">Lavage karcher</span>
+                            </div>
+                        </div>
+
+                        <button onclick="openModal('Omlet Eglu Cube Pro', 'Omlet France', 'POULE2026 (-10%)', 'https://www.omlet.fr')" class="w-full bg-foret-500 hover:bg-foret-800 text-white font-bold py-3 rounded-xl transition-colors flex items-center justify-center gap-2 text-sm shadow">
+                            <span>Voir le test & la réduction (-10%)</span>
+                            <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </button>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="quiz" class="py-16 bg-foret-800 text-white relative">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6">
+            
+            <div class="text-center space-y-3 mb-10">
+                <span class="bg-terracotta-600/30 text-amber-300 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest border border-terracotta-500/40">Sélecteur Sur-Mesure</span>
+                <h2 class="font-serif text-2xl sm:text-4xl font-bold">Quel poulailler correspond à vos poules ?</h2>
+                <p class="text-bois-100 text-sm max-w-xl mx-auto">Configurez vos besoins en 3 clics et découvrez le modèle le plus adapté à votre jardin.</p>
+            </div>
+
+            <!-- Quiz Card Container -->
+            <div class="bg-white text-slate-800 rounded-3xl p-6 sm:p-8 shadow-2xl space-y-8">
+                
+                <!-- Q1: Capacity -->
+                <div>
+                    <label class="block text-sm font-bold text-foret-900 mb-3 flex items-center gap-2">
+                        <span class="w-6 h-6 rounded-full bg-sauge-100 text-foret-500 flex items-center justify-center text-xs font-black">1</span>
+                        Combien de poules voulez-vous accueillir ?
+                    </label>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                        <button onclick="setQuiz('capacity', '2-3', this)" class="q-cap p-3.5 border-2 border-bois-200 rounded-2xl font-bold text-xs sm:text-sm hover:border-foret-500 transition text-center">
+                            <i class="fa-solid fa-kiwi-bird text-foret-500 block text-lg mb-1"></i> 2 à 3 poules
+                        </button>
+                        <button onclick="setQuiz('capacity', '4-6', this)" class="q-cap q-active p-3.5 border-2 border-foret-500 bg-sauge-50 rounded-2xl font-bold text-xs sm:text-sm transition text-center">
+                            <i class="fa-solid fa-feather text-foret-500 block text-lg mb-1"></i> 4 à 6 poules
+                        </button>
+                        <button onclick="setQuiz('capacity', '6-8', this)" class="q-cap p-3.5 border-2 border-bois-200 rounded-2xl font-bold text-xs sm:text-sm hover:border-foret-500 transition text-center">
+                            <i class="fa-solid fa-egg text-foret-500 block text-lg mb-1"></i> 6 à 8 poules
+                        </button>
+                        <button onclick="setQuiz('capacity', '8+', this)" class="q-cap p-3.5 border-2 border-bois-200 rounded-2xl font-bold text-xs sm:text-sm hover:border-foret-500 transition text-center">
+                            <i class="fa-solid fa-shield-dog text-foret-500 block text-lg mb-1"></i> 8+ (Grand parc)
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Q2: Material -->
+                <div>
+                    <label class="block text-sm font-bold text-foret-900 mb-3 flex items-center gap-2">
+                        <span class="w-6 h-6 rounded-full bg-sauge-100 text-foret-500 flex items-center justify-center text-xs font-black">2</span>
+                        Matériau & Entretien souhaité
+                    </label>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                        <button onclick="setQuiz('material', 'plastique', this)" class="q-mat q-active p-3.5 border-2 border-foret-500 bg-sauge-50 rounded-2xl text-left transition">
+                            <span class="block font-bold text-sm text-foret-900">Plastique Recyclé</span>
+                            <span class="text-[11px] text-slate-500">Zéro pou rouge, nettoyage jet d'eau</span>
+                        </button>
+                        <button onclick="setQuiz('material', 'bois', this)" class="q-mat p-3.5 border-2 border-bois-200 rounded-2xl text-left hover:border-foret-500 transition">
+                            <span class="block font-bold text-sm text-foret-900">Bois Traité Imputrescible</span>
+                            <span class="text-[11px] text-slate-500">Aspect chaleureux, rustique</span>
+                        </button>
+                        <button onclick="setQuiz('material', 'any', this)" class="q-mat p-3.5 border-2 border-bois-200 rounded-2xl text-left hover:border-foret-500 transition">
+                            <span class="block font-bold text-sm text-foret-900">Indifférent</span>
+                            <span class="text-[11px] text-slate-500">Privilégier le meilleur rapport Q/P</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Q3: Budget -->
+                <div>
+                    <label class="block text-sm font-bold text-foret-900 mb-3 flex items-center gap-2">
+                        <span class="w-6 h-6 rounded-full bg-sauge-100 text-foret-500 flex items-center justify-center text-xs font-black">3</span>
+                        Budget indicatif
+                    </label>
+                    <div class="grid grid-cols-3 gap-3">
+                        <button onclick="setQuiz('budget', 'eco', this)" class="q-bud p-3 border-2 border-bois-200 rounded-2xl text-center font-bold text-xs sm:text-sm hover:border-foret-500">Moins de 250 €</button>
+                        <button onclick="setQuiz('budget', 'mid', this)" class="q-bud q-active p-3 border-2 border-foret-500 bg-sauge-50 rounded-2xl text-center font-bold text-xs sm:text-sm">250 € à 500 €</button>
+                        <button onclick="setQuiz('budget', 'premium', this)" class="q-bud p-3 border-2 border-bois-200 rounded-2xl text-center font-bold text-xs sm:text-sm hover:border-foret-500">500 € + (Haute qualité)</button>
+                    </div>
+                </div>
+
+                <!-- Result Box -->
+                <div class="bg-bois-100 p-5 rounded-2xl border border-bois-300 flex flex-col sm:flex-row items-center justify-between gap-4">
+                    <div class="flex items-center gap-4">
+                        <div class="w-14 h-14 rounded-2xl bg-foret-500 text-amber-300 flex items-center justify-center text-2xl font-bold flex-shrink-0">
+                            <i class="fa-solid fa-trophy"></i>
+                        </div>
+                        <div>
+                            <span class="text-[10px] font-extrabold uppercase text-terracotta-600 tracking-wider">Résultat du Sélecteur</span>
+                            <h4 id="quizResultTitle" class="font-serif font-bold text-lg text-foret-900">Omlet Eglu Cube Pro</h4>
+                            <p id="quizResultDesc" class="text-xs text-slate-600">Modèle plastique anti-poux rouges recommandé pour 4-6 poules.</p>
+                        </div>
+                    </div>
+                    <a href="#comparateur" class="w-full sm:w-auto bg-terracotta-600 hover:bg-terracotta-700 text-white font-bold px-6 py-3 rounded-xl text-xs sm:text-sm transition-colors text-center whitespace-nowrap cta-shadow">
+                        Voir l'offre partenaire <i class="fa-solid fa-arrow-right ml-1"></i>
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <section id="comparateur" class="py-16 sm:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center space-y-3 mb-10">
+            <span class="text-terracotta-600 font-bold text-xs uppercase tracking-widest bg-terracotta-50 px-3 py-1 rounded-full border border-terracotta-200">Évaluation Indépendante</span>
+            <h2 class="font-serif text-3xl sm:text-4xl font-bold text-foret-900">Comparatif des Meilleurs Poulaillers 2026</h2>
+            <p class="text-slate-600 text-sm max-w-xl mx-auto">Filtré selon vos besoins d'éleveur domestique. Cliquez sur un produit pour voir l'offre négociée.</p>
+        </div>
+
+        <!-- Filter Buttons -->
+        <div class="flex flex-wrap items-center justify-center gap-2 mb-8">
+            <button onclick="filterTable('all', this)" class="tbl-btn tbl-active bg-foret-500 text-white font-semibold text-xs sm:text-sm px-5 py-2.5 rounded-xl transition shadow">Tous (6)</button>
+            <button onclick="filterTable('top', this)" class="tbl-btn bg-white text-slate-700 hover:bg-bois-100 font-semibold text-xs sm:text-sm px-5 py-2.5 rounded-xl border border-bois-200 transition">⭐ Top Ventes</button>
+            <button onclick="filterTable('plastique', this)" class="tbl-btn bg-white text-slate-700 hover:bg-bois-100 font-semibold text-xs sm:text-sm px-5 py-2.5 rounded-xl border border-bois-200 transition">🦠 Anti-Poux (Plastique)</button>
+            <button onclick="filterTable('bois', this)" class="tbl-btn bg-white text-slate-700 hover:bg-bois-100 font-semibold text-xs sm:text-sm px-5 py-2.5 rounded-xl border border-bois-200 transition">🪵 Bois Imputrescible</button>
+            <button onclick="filterTable('porte', this)" class="tbl-btn bg-white text-slate-700 hover:bg-bois-100 font-semibold text-xs sm:text-sm px-5 py-2.5 rounded-xl border border-bois-200 transition">🚪 Portes Automatiques</button>
+        </div>
+
+        <!-- Table Container -->
+        <div class="bg-white rounded-3xl border border-bois-200 card-shadow overflow-hidden">
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse min-w-[800px]">
+                    <thead>
+                        <tr class="bg-bois-100/80 border-b border-bois-200 text-xs font-bold uppercase tracking-wider text-foret-900">
+                            <th class="p-4 pl-6">Poulailler / Accessoire</th>
+                            <th class="p-4">Capacité</th>
+                            <th class="p-4">Matériau / Atout</th>
+                            <th class="p-4">Note</th>
+                            <th class="p-4">Sécurité Anti-Renard</th>
+                            <th class="p-4 pr-6 text-right">Action / Offre</th>
+                        </tr>
+                    </thead>
+                    <tbody id="comparisonTableBody" class="divide-y divide-bois-200 text-sm">
+                        <!-- Dynamically populated by JS -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </section>
+
+    <section id="top-choix" class="py-16 bg-bois-100 border-y border-bois-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white rounded-3xl p-6 sm:p-10 border border-bois-300 card-shadow">
+                <div class="grid lg:grid-cols-2 gap-10 items-center">
+                    
+                    <!-- Left Images -->
+                    <div class="space-y-4">
+                        <div class="relative rounded-2xl overflow-hidden bg-bois-100 h-80 sm:h-96 border border-bois-200">
+                            <img id="showcaseImg" src="https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?auto=format&fit=crop&w=1000&q=80" alt="Poulailler Omlet" class="w-full h-full object-cover">
+                            <span class="absolute top-4 left-4 bg-terracotta-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow">
+                                <i class="fa-solid fa-crown text-amber-300 mr-1"></i> Choix Vétérinaire 2026
+                            </span>
+                        </div>
+                        <div class="grid grid-cols-3 gap-3">
+                            <img onclick="swapImg(this.src)" src="https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?auto=format&fit=crop&w=400&q=80" class="h-20 w-full object-cover rounded-xl cursor-pointer border-2 border-foret-500 hover:opacity-90 transition">
+                            <img onclick="swapImg(this.src)" src="https://images.unsplash.com/photo-1516467508483-a7212febe31a?auto=format&fit=crop&w=400&q=80" class="h-20 w-full object-cover rounded-xl cursor-pointer border border-bois-300 hover:opacity-90 transition">
+                            <img onclick="swapImg(this.src)" src="https://images.unsplash.com/photo-1563281577-a7be47e20db9?auto=format&fit=crop&w=400&q=80" class="h-20 w-full object-cover rounded-xl cursor-pointer border border-bois-300 hover:opacity-90 transition">
+                        </div>
+                    </div>
+
+                    <!-- Right Specs -->
+                    <div class="space-y-6">
+                        <div>
+                            <span class="text-xs font-bold uppercase text-foret-500 tracking-wider">Partenaire Officiel Omlet</span>
+                            <h3 class="font-serif text-2xl sm:text-3xl font-bold text-foret-900 mt-1">Poulailler Omlet Eglu Cube Pro</h3>
+                            <div class="flex items-center gap-3 mt-2">
+                                <div class="flex text-amber-400 text-sm">
+                                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+                                </div>
+                                <span class="font-bold text-sm text-slate-800">4.9 / 5</span>
+                                <span class="text-xs text-slate-500">(+1 420 avis vérifiés)</span>
+                            </div>
+                        </div>
+
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            Le choix n°1 des éleveurs urbains et ruraux. Fabriqué en polymère isotherme, l'Eglu Cube résout définitivement le problème des poux rouges. Il se nettoie en 5 minutes chrono et offre une protection maximale contre les renards.
+                        </p>
+
+                        <!-- Highlights Grid -->
+                        <div class="grid grid-cols-2 gap-3 text-xs">
+                            <div class="bg-sauge-50 p-3 rounded-xl border border-sauge-200">
+                                <span class="font-bold text-foret-900 block">✓ Isolation Isotherme</span>
+                                <span class="text-slate-600">Chaud en hiver, frais en été</span>
+                            </div>
+                            <div class="bg-sauge-50 p-3 rounded-xl border border-sauge-200">
+                                <span class="font-bold text-foret-900 block">✓ Jupe Anti-Intrusion</span>
+                                <span class="text-slate-600">Grillage à plat anti-creusement</span>
+                            </div>
+                        </div>
+
+                        <button onclick="openModal('Omlet Eglu Cube Pro', 'Omlet France', 'POULE2026 (-10%)', 'https://www.omlet.fr')" class="w-full bg-terracotta-600 hover:bg-terracotta-700 text-white font-bold py-3.5 rounded-xl transition-all text-center cta-shadow flex items-center justify-center gap-2 text-sm">
+                            <i class="fa-solid fa-tag text-amber-200"></i>
+                            <span>Activer le code -10% & Voir l'offre</span>
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="calculateur" class="py-16 bg-white border-b border-bois-200">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center space-y-8">
+            
+            <div class="space-y-3">
+                <span class="bg-sauge-100 text-foret-500 text-xs font-bold px-3 py-1 rounded-full uppercase">Simulateur Éco-Responsable</span>
+                <h2 class="font-serif text-3xl font-bold text-foret-900">Simulez votre récolte d'œufs bio</h2>
+                <p class="text-slate-600 text-sm max-w-lg mx-auto">Calculez les œufs récoltés, vos économies d'épicerie et les déchets de cuisine revalorisés.</p>
+            </div>
+
+            <div class="bg-bois-100 p-6 sm:p-8 rounded-3xl border border-bois-300 card-shadow space-y-6 text-left">
+                
+                <div>
+                    <div class="flex justify-between items-center mb-2">
+                        <label class="font-bold text-foret-900 text-sm">Nombre de poules pondeuses :</label>
+                        <span id="henVal" class="font-serif font-black text-2xl text-terracotta-600 bg-white px-3 py-1 rounded-xl border border-bois-300">4 poules</span>
+                    </div>
+                    <input type="range" id="henSlider" min="2" max="12" value="4" oninput="calcEggs()" class="w-full h-3 bg-bois-200 rounded-lg appearance-none cursor-pointer accent-foret-500">
+                    <div class="flex justify-between text-[11px] text-slate-500 mt-1">
+                        <span>2 poules</span>
+                        <span>6 poules (Moyenne)</span>
+                        <span>12 poules (Grande famille)</span>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
+                    <div class="bg-white p-4 rounded-2xl border border-bois-200 shadow-sm">
+                        <i class="fa-solid fa-egg text-amber-500 text-2xl mb-1"></i>
+                        <span id="resEggs" class="block font-serif font-extrabold text-2xl text-foret-900">1 000</span>
+                        <span class="text-xs text-slate-500 font-medium">Œufs bio / an</span>
+                    </div>
+                    <div class="bg-white p-4 rounded-2xl border border-bois-200 shadow-sm">
+                        <i class="fa-solid fa-piggy-bank text-emerald-600 text-2xl mb-1"></i>
+                        <span id="resSavings" class="block font-serif font-extrabold text-2xl text-foret-900">380 €</span>
+                        <span class="text-xs text-slate-500 font-medium">Économisés vs Magasin</span>
+                    </div>
+                    <div class="bg-white p-4 rounded-2xl border border-bois-200 shadow-sm">
+                        <i class="fa-solid fa-recycle text-foret-500 text-2xl mb-1"></i>
+                        <span id="resWaste" class="block font-serif font-extrabold text-2xl text-foret-900">600 kg</span>
+                        <span class="text-xs text-slate-500 font-medium">Déchets valorisés</span>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <section id="sante" class="py-16 bg-bois-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-10">
+                <div>
+                    <span class="text-foret-500 font-bold text-xs uppercase tracking-widest bg-sauge-100 px-3 py-1 rounded-full">Phytothérapie & Soins</span>
+                    <h2 class="font-serif text-3xl font-bold text-foret-900 mt-2">Santé Naturelle du Poulailler</h2>
+                    <p class="text-slate-600 text-sm mt-1">Prévenir les maladies et maintenir vos poules en pleine forme avec des solutions naturelles.</p>
+                </div>
+            </div>
+
+            <!-- Articles Grid -->
+            <div class="grid md:grid-cols-3 gap-8">
+                
+                <div class="bg-white rounded-2xl overflow-hidden border border-bois-200 card-shadow">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1516467508483-a7212febe31a?auto=format&fit=crop&w=600&q=80" alt="Terre de diatomée" class="w-full h-full object-cover">
+                        <span class="absolute top-3 left-3 bg-foret-800 text-white text-[10px] uppercase font-bold px-2 py-1 rounded">Anti-Parasites</span>
+                    </div>
+                    <div class="p-5 space-y-2">
+                        <h3 class="font-serif font-bold text-lg text-foret-900">Éradiquer le Pou Rouge naturellement</h3>
+                        <p class="text-slate-600 text-xs">Utilisation de la terre de diatomée non calcinée et des huiles essentielles répulsives.</p>
+                        <button onclick="openModal('Terre de Diatomée Bio 5kg', 'AnimoNature', 'BIO10', 'https://www.animonature.com')" class="text-terracotta-600 font-bold text-xs hover:underline block pt-2">Voir le soin recommandé →</button>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl overflow-hidden border border-bois-200 card-shadow">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1563281577-a7be47e20db9?auto=format&fit=crop&w=600&q=80" alt="Nutrition volailles" class="w-full h-full object-cover">
+                        <span class="absolute top-3 left-3 bg-foret-800 text-white text-[10px] uppercase font-bold px-2 py-1 rounded">Nutrition Phyto</span>
+                    </div>
+                    <div class="p-5 space-y-2">
+                        <h3 class="font-serif font-bold text-lg text-foret-900">Vinaigre de Cidre & Thym dans l'eau</h3>
+                        <p class="text-slate-600 text-xs">Renforce la flore intestinale des volailles et prévient la coccidiose en toute saison.</p>
+                        <button onclick="openModal('Compléments Phyto Volailles', 'VetPhyto', 'SANTE15', 'https://www.vetphyto.com')" class="text-terracotta-600 font-bold text-xs hover:underline block pt-2">Voir les compléments bio →</button>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl overflow-hidden border border-bois-200 card-shadow">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?auto=format&fit=crop&w=600&q=80" alt="Porte automatique" class="w-full h-full object-cover">
+                        <span class="absolute top-3 left-3 bg-terracotta-600 text-white text-[10px] uppercase font-bold px-2 py-1 rounded">Sécurité Nuit</span>
+                    </div>
+                    <div class="p-5 space-y-2">
+                        <h3 class="font-serif font-bold text-lg text-foret-900">Portes Automatiques Solaire ChickenGuard</h3>
+                        <p class="text-slate-600 text-xs">Test des trappes motorisées avec capteur de luminosité anti-renard.</p>
+                        <button onclick="openModal('Porte Automatique ChickenGuard', 'ChickenGuard France', 'GUARD10', 'https://www.chickenguard.fr')" class="text-terracotta-600 font-bold text-xs hover:underline block pt-2">Voir le test complet →</button>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <section class="py-16 bg-gradient-to-br from-foret-800 to-foret-900 text-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6">
+            <div class="bg-white/10 backdrop-blur-md border border-white/20 p-8 sm:p-12 rounded-3xl text-center space-y-6">
+                
+                <div class="w-16 h-16 rounded-2xl bg-terracotta-600 text-white flex items-center justify-center text-3xl mx-auto shadow-lg">
+                    <i class="fa-solid fa-book-open-reader"></i>
+                </div>
+
+                <div class="space-y-2">
+                    <span class="text-amber-300 text-xs font-bold uppercase tracking-widest">E-Book Gratuit (28 Pages)</span>
+                    <h2 class="font-serif text-2xl sm:text-4xl font-bold">Le Guide Ultime du Poulailler Bio & Serein</h2>
+                    <p class="text-bois-100 text-xs sm:text-sm max-w-xl mx-auto">
+                        Recevez nos fiches pratiques par email : alimentation naturelle, remèdes anti-poux rouges et calendrier de ponte.
+                    </p>
+                </div>
+
+                <form onsubmit="submitForm(event)" class="max-w-md mx-auto flex flex-col sm:flex-row gap-3">
+                    <input type="email" required placeholder="Votre adresse email..." class="flex-1 px-4 py-3.5 rounded-xl bg-white text-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-terracotta-500 font-medium">
+                    <button type="submit" class="bg-terracotta-600 hover:bg-terracotta-700 text-white font-bold px-6 py-3.5 rounded-xl text-sm transition-all shadow-lg flex items-center justify-center gap-2">
+                        <span>Recevoir le PDF</span>
+                        <i class="fa-solid fa-paper-plane text-xs"></i>
+                    </button>
+                </form>
+
+                <div id="formMsg" class="hidden bg-emerald-800 text-emerald-100 p-3 rounded-xl text-xs font-semibold">
+                    🎉 Votre guide est en cours d'envoi par email !
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-foret-900 text-bois-200 pt-16 pb-12 border-t border-foret-800 text-xs">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+            
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                
+                <div class="space-y-3">
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 h-8 rounded-xl bg-terracotta-600 flex items-center justify-center text-white">
+                            <i class="fa-solid fa-feather-pointed"></i>
+                        </div>
+                        <span class="font-serif text-lg font-bold text-white">Mon Poulailler Bio</span>
+                    </div>
+                    <p class="text-slate-400 leading-relaxed">
+                        Le guide indépendant dédié à l'élevage familial éco-responsable et au bien-être des volailles.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-white uppercase tracking-wider mb-3 text-xs">Poulaillers</h4>
+                    <ul class="space-y-2 text-slate-300">
+                        <li><a href="#comparateur" class="hover:text-white">Poulaillers Plastique Anti-Poux</a></li>
+                        <li><a href="#comparateur" class="hover:text-white">Poulaillers Bois Imputrescible</a></li>
+                        <li><a href="#comparateur" class="hover:text-white">Portes Automatiques Solaire</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-white uppercase tracking-wider mb-3 text-xs">Suivez-nous</h4>
+                    <div class="flex space-x-4 text-base text-slate-300">
+                        <a href="#" class="hover:text-terracotta-500"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="#" class="hover:text-terracotta-500"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="hover:text-terracotta-500"><i class="fa-brands fa-youtube"></i></a>
+                        <a href="#" class="hover:text-terracotta-500"><i class="fa-brands fa-pinterest"></i></a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-white uppercase tracking-wider mb-3 text-xs">Affiliation & Transparence</h4>
+                    <p class="text-slate-400 leading-relaxed">
+                        En tant que partenaire affiliation, nous percevons une commission sur les achats qualifiés sans aucun surcoût pour l'acheteur.
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="pt-8 border-t border-foret-800 flex flex-col sm:flex-row items-center justify-between text-slate-400 gap-4">
+                <p>© 2026 Mon Poulailler Bio. Tous droits réservés.</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="hover:text-white">Mentions Légales</a>
+                    <a href="#" class="hover:text-white">Confidentialité</a>
+                    <a href="#" class="hover:text-white">Contact</a>
+                </div>
+            </div>
+
+        </div>
+    </footer>
+
+    <div id="affModal" class="fixed inset-0 bg-slate-900/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-md w-full p-6 space-y-6 text-center relative card-shadow">
+            
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 p-2">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+
+            <div class="w-14 h-14 bg-sauge-100 text-foret-500 rounded-full flex items-center justify-center text-2xl mx-auto">
+                <i class="fa-solid fa-bag-shopping"></i>
+            </div>
+
+            <div class="space-y-1">
+                <span class="text-[10px] font-bold uppercase tracking-wider text-foret-500 bg-sauge-50 px-2.5 py-1 rounded-full">Partenaire Officiel</span>
+                <h3 id="modProdName" class="font-serif text-xl font-bold text-foret-900">Poulailler Omlet</h3>
+                <p class="text-xs text-slate-500">Redirection vers la boutique officielle de <strong id="modPartner">Omlet France</strong>.</p>
+            </div>
+
+            <div class="bg-bois-100 border-2 border-dashed border-terracotta-500 p-4 rounded-2xl space-y-2">
+                <span class="text-xs font-bold text-terracotta-700 block">🎁 Code Promo Réduction :</span>
+                <div class="flex items-center justify-center gap-2">
+                    <code id="modPromo" class="bg-white px-4 py-2 rounded-xl border border-bois-300 font-mono font-bold text-base text-slate-800">POULE2026</code>
+                    <button onclick="copyCode()" class="bg-terracotta-600 hover:bg-terracotta-700 text-white text-xs font-bold px-3 py-2 rounded-xl">Copier</button>
+                </div>
+                <span id="copyMsg" class="text-[10px] text-emerald-600 font-bold block hidden">Code copié !</span>
+            </div>
+
+            <a id="modLink" href="#" target="_blank" onclick="closeModal()" class="w-full bg-foret-500 hover:bg-foret-800 text-white font-bold py-3.5 rounded-xl transition flex items-center justify-center gap-2 text-sm shadow">
+                <span>Accéder à la boutique partenaire</span>
+                <i class="fa-solid fa-arrow-right text-xs"></i>
+            </a>
+
+        </div>
+    </div>
+
+    <script>
+        // Data Store
+        const products = [
+            {
+                id: 'omlet-cube',
+                name: 'Omlet Eglu Cube Pro',
+                category: ['top', 'plastique'],
+                capacity: '4 à 8 poules',
+                material: 'Plastique Recyclé',
+                rating: 4.9,
+                badge: '⭐ Choix N°1',
+                badgeColor: 'bg-terracotta-600',
+                partner: 'Omlet France',
+                promo: 'POULE2026 (-10%)',
+                url: 'https://www.omlet.fr',
+                image: 'https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?auto=format&fit=crop&w=300&q=80',
+                highlights: '0 pou rouge • Lavable karcher'
+            },
+            {
+                id: 'chalet-beaumont',
+                name: 'Chalet Bois Douglas - Ferme de Beaumont',
+                category: ['top', 'bois'],
+                capacity: '3 à 6 poules',
+                material: 'Bois Douglas 19mm',
+                rating: 4.7,
+                badge: 'Bois Français Bio',
+                badgeColor: 'bg-foret-500',
+                partner: 'Ferme de Beaumont',
+                promo: 'FERME5 (-5%)',
+                url: 'https://www.fermedebeaumont.com',
+                image: 'https://images.unsplash.com/photo-1516467508483-a7212febe31a?auto=format&fit=crop&w=300&q=80',
+                highlights: 'Bois imputrescible sans traitement toxique'
+            },
+            {
+                id: 'chickenguard',
+                name: 'Porte Solaire ChickenGuard Xtreme',
+                category: ['porte', 'top'],
+                capacity: 'Tout poulailler',
+                material: 'Aluminium Motorisé',
+                rating: 4.8,
+                badge: 'Sécurité Nuit',
+                badgeColor: 'bg-amber-600',
+                partner: 'ChickenGuard Official',
+                promo: 'GUARD10 (-10€)',
+                url: 'https://www.chickenguard.fr',
+                image: 'https://images.unsplash.com/photo-1563281577-a7be47e20db9?auto=format&fit=crop&w=300&q=80',
+                highlights: 'Minuterie + Capteur de luminosité'
+            },
+            {
+                id: 'pawhut',
+                name: 'Poulailler PawHut Volière',
+                category: ['bois'],
+                capacity: '2 à 3 poules',
+                material: 'Bois de Pin',
+                rating: 4.2,
+                badge: 'Petit Budget',
+                badgeColor: 'bg-slate-600',
+                partner: 'ManoMano / Leroy Merlin',
+                promo: 'OFFRE SITE',
+                url: 'https://www.manomano.fr',
+                image: 'https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?auto=format&fit=crop&w=300&q=80',
+                highlights: 'Parfait pour démarrer avec 2 poules'
+            },
+            {
+                id: 'omlet-go',
+                name: 'Omlet Eglu Go Up',
+                category: ['plastique'],
+                capacity: '2 à 4 poules',
+                material: 'Plastique Recyclé',
+                rating: 4.8,
+                badge: 'Ergonomique',
+                badgeColor: 'bg-foret-500',
+                partner: 'Omlet France',
+                promo: 'POULE2026 (-10%)',
+                url: 'https://www.omlet.fr',
+                image: 'https://images.unsplash.com/photo-1516467508483-a7212febe31a?auto=format&fit=crop&w=300&q=80',
+                highlights: 'Surélevé sur pieds pour récolte facile'
+            },
+            {
+                id: 'kerbl',
+                name: 'Poulailler Kerbl Bonanza',
+                category: ['bois'],
+                capacity: '4 à 6 poules',
+                material: 'Bois Eco Plast',
+                rating: 4.5,
+                badge: 'Rapport Q/P',
+                badgeColor: 'bg-foret-500',
+                partner: 'Amazon / Partners',
+                promo: 'PRIX AMAZON',
+                url: 'https://www.amazon.fr',
+                image: 'https://images.unsplash.com/photo-1563281577-a7be47e20db9?auto=format&fit=crop&w=300&q=80',
+                highlights: 'Plancher plastique amovible'
+            }
+        ];
+
+        // Init Table
+        document.addEventListener('DOMContentLoaded', () => {
+            renderTable(products);
+            calcEggs();
+        });
+
+        function renderTable(list) {
+            const tbody = document.getElementById('comparisonTableBody');
+            tbody.innerHTML = '';
+            list.forEach(p => {
+                const tr = document.createElement('tr');
+                tr.className = 'hover:bg-bois-50/80 transition border-b border-bois-200';
+                tr.innerHTML = `
+                    <td class="p-4 pl-6">
+                        <div class="flex items-center gap-3">
+                            <img src="${p.image}" class="w-14 h-14 rounded-xl object-cover border border-bois-300">
+                            <div>
+                                <span class="${p.badgeColor} text-white text-[10px] font-bold px-2 py-0.5 rounded-full inline-block mb-1">${p.badge}</span>
+                                <h4 class="font-serif font-bold text-foret-900 text-sm leading-snug">${p.name}</h4>
+                                <p class="text-[11px] text-slate-500">${p.highlights}</p>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="p-4 font-bold text-foret-900 text-xs">${p.capacity}</td>
+                    <td class="p-4 text-xs font-medium text-slate-700">${p.material}</td>
+                    <td class="p-4 text-xs font-bold text-amber-500">★ ${p.rating}</td>
+                    <td class="p-4 text-xs font-semibold text-emerald-800">⭐⭐⭐⭐⭐ (Haute)</td>
+                    <td class="p-4 pr-6 text-right">
+                        <button onclick="openModal('${p.name}', '${p.partner}', '${p.promo}', '${p.url}')" class="bg-terracotta-600 hover:bg-terracotta-700 text-white font-bold text-xs px-4 py-2 rounded-xl transition shadow">
+                            Voir l'offre
+                        </button>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function filterTable(cat, btn) {
+            document.querySelectorAll('.tbl-btn').forEach(b => {
+                b.classList.remove('bg-foret-500', 'text-white', 'shadow');
+                b.classList.add('bg-white', 'text-slate-700');
+            });
+            btn.classList.remove('bg-white', 'text-slate-700');
+            btn.classList.add('bg-foret-500', 'text-white', 'shadow');
+
+            if(cat === 'all') renderTable(products);
+            else renderTable(products.filter(p => p.category.includes(cat)));
+        }
+
+        function filterBySearch() {
+            const q = document.getElementById('searchInput').value.toLowerCase();
+            renderTable(products.filter(p => p.name.toLowerCase().includes(q) || p.material.toLowerCase().includes(q)));
+        }
+
+        // Quiz Logic
+        let quizState = { capacity: '4-6', material: 'plastique', budget: 'mid' };
+        function setQuiz(type, val, btn) {
+            quizState[type] = val;
+            const cls = type === 'capacity' ? '.q-cap' : type === 'material' ? '.q-mat' : '.q-bud';
+            document.querySelectorAll(cls).forEach(b => {
+                b.classList.remove('border-foret-500', 'bg-sauge-50', 'q-active');
+                b.classList.add('border-bois-200');
+            });
+            btn.classList.remove('border-bois-200');
+            btn.classList.add('border-foret-500', 'bg-sauge-50', 'q-active');
+
+            const title = document.getElementById('quizResultTitle');
+            const desc = document.getElementById('quizResultDesc');
+            if(quizState.material === 'plastique') {
+                title.textContent = "Omlet Eglu Cube Pro";
+                desc.textContent = "Recommandé pour zéro entretien et protection anti-poux rouges.";
+            } else {
+                title.textContent = "Chalet Bois Douglas - Ferme de Beaumont";
+                desc.textContent = "Superbe poulailler rustique en bois imputrescible fabriqué en France.";
+            }
+        }
+
+        // Calculator Logic
+        function calcEggs() {
+            const v = parseInt(document.getElementById('henSlider').value);
+            document.getElementById('henVal').textContent = v + " poules";
+            document.getElementById('resEggs').textContent = (v * 250).toLocaleString('fr-FR');
+            document.getElementById('resSavings').textContent = Math.round(v * 250 * 0.38) + " €";
+            document.getElementById('resWaste').textContent = (v * 150) + " kg";
+        }
+
+        function swapImg(src) {
+            document.getElementById('showcaseImg').src = src;
+        }
+
+        // Modal Controls
+        function openModal(pName, partner, promo, link) {
+            document.getElementById('modProdName').textContent = pName;
+            document.getElementById('modPartner').textContent = partner;
+            document.getElementById('modPromo').textContent = promo;
+            document.getElementById('modLink').href = link;
+            document.getElementById('copyMsg').classList.add('hidden');
+            document.getElementById('affModal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('affModal').classList.add('hidden');
+        }
+
+        function copyCode() {
+            const c = document.getElementById('modPromo').textContent;
+            navigator.clipboard.writeText(c);
+            document.getElementById('copyMsg').classList.remove('hidden');
+        }
+
+        function toggleMobileMenu() {
+            document.getElementById('mobileMenu').classList.toggle('hidden');
+        }
+
+        function submitForm(e) {
+            e.preventDefault();
+            document.getElementById('formMsg').classList.remove('hidden');
+            e.target.reset();
+        }
+    </script>
+</body>
+</html>
