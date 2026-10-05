@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mon Poulailler Bio - Élevage Familial & Soins Naturels</title>
+    <title>Mon Poulailler Bio - Élevage Familial, Matériel & Soins Naturels</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome Icons CDN -->
@@ -11,7 +11,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
     <script>
         tailwind.config = {
@@ -35,215 +35,130 @@
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: #F3ECE2; }
         ::-webkit-scrollbar-thumb { background: #4D6F4F; border-radius: 4px; }
-        .card-shadow { box-shadow: 0 10px 30px -8px rgba(27, 60, 43, 0.08); }
+        .card-shadow { box-shadow: 0 10px 25px -5px rgba(27, 60, 43, 0.08), 0 8px 10px -6px rgba(27, 60, 43, 0.04); }
     </style>
 </head>
 <body class="bg-bois-50 text-slate-800 font-sans antialiased selection:bg-terracotta-500 selection:text-white">
 
     <!-- Bandeau Supérieur -->
-    <div class="bg-foret-900 text-bois-100 text-xs sm:text-sm py-2 px-4 text-center font-medium border-b border-foret-800">
-        <span>🌿 Guide indépendant pour l'élevage familial et bio de poules rédigé pour <strong>2026</strong>.</span>
+    <div class="bg-foret-900 text-bois-100 text-xs py-2 px-4 text-center font-medium border-b border-foret-800 flex items-center justify-center gap-2">
+        <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span>Guide & Comparatif indépendant d'équipements pour l'élevage familial — Édition <strong>2026</strong></span>
     </div>
 
-    <!-- En-tête de Navigation Ajusté -->
+    <!-- Navigation -->
     <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-bois-200 shadow-sm py-2.5">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between gap-2">
+            <div class="flex items-center justify-between gap-4">
                 
-                <!-- Logo Compact -->
                 <a href="index.html" class="flex items-center gap-2.5 shrink-0 group">
-                    <div class="w-10 h-10 rounded-xl bg-foret-500 text-white flex items-center justify-center shadow-md group-hover:bg-terracotta-600 transition-colors">
+                    <div class="w-10 h-10 rounded-xl bg-foret-500 text-white flex items-center justify-center shadow-md group-hover:bg-terracotta-600 transition">
                         <i class="fa-solid fa-feather-pointed text-lg"></i>
                     </div>
                     <div>
                         <span class="font-serif text-lg sm:text-xl font-bold text-foret-900 tracking-tight block leading-none">Mon Poulailler <span class="text-terracotta-600">Bio</span></span>
-                        <span class="text-[9px] font-semibold uppercase tracking-wider text-bois-700">Guide &amp; Élevage</span>
+                        <span class="text-[9px] font-semibold uppercase tracking-wider text-bois-700">Guide & Matériel Durable</span>
                     </div>
                 </a>
 
-                <!-- Navigation Ordinateur : Boutons Compacts & Ajustés -->
                 <nav class="hidden lg:flex items-center gap-1.5 shrink-0">
-                    
-                    <!-- Bouton Accueil (Actif) -->
-                    <a href="index.html" class="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-foret-50 border border-foret-500 text-foret-900 font-bold text-xs shadow-sm transition hover:bg-foret-100">
-                        <div class="w-6 h-6 rounded-lg bg-foret-500 text-white flex items-center justify-center text-[10px]">
-                            <i class="fa-solid fa-house"></i>
-                        </div>
+                    <a href="index.html" class="flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-foret-50 border border-foret-500 text-foret-900 font-bold text-xs shadow-sm">
+                        <i class="fa-solid fa-house text-foret-600"></i>
                         <span>Accueil</span>
                     </a>
-
-                    <!-- Bouton Comparateur -->
-                    <a href="comparatif.html" class="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-bois-50 hover:bg-sauge-50 border border-bois-200 hover:border-sauge-300 text-slate-700 hover:text-foret-900 font-semibold text-xs transition">
-                        <div class="w-6 h-6 rounded-lg bg-sauge-100 text-foret-600 flex items-center justify-center text-[10px]">
-                            <i class="fa-solid fa-house-chimney"></i>
-                        </div>
+                    <a href="comparatif.html" class="flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-bois-50 hover:bg-sauge-50 border border-bois-200 hover:border-sauge-300 text-slate-700 hover:text-foret-900 font-semibold text-xs transition">
+                        <i class="fa-solid fa-house-chimney text-sauge-600"></i>
                         <span>Comparateur</span>
                     </a>
-
-                    <!-- Bouton Santé Bio -->
-                    <a href="sante.html" class="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-bois-50 hover:bg-terracotta-50 border border-bois-200 hover:border-terracotta-300 text-slate-700 hover:text-terracotta-700 font-semibold text-xs transition">
-                        <div class="w-6 h-6 rounded-lg bg-terracotta-50 text-terracotta-600 flex items-center justify-center text-[10px]">
-                            <i class="fa-solid fa-notes-medical"></i>
-                        </div>
+                    <a href="sante.html" class="flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-bois-50 hover:bg-terracotta-50 border border-bois-200 hover:border-terracotta-300 text-slate-700 hover:text-terracotta-700 font-semibold text-xs transition">
+                        <i class="fa-solid fa-notes-medical text-terracotta-600"></i>
                         <span>Santé Bio</span>
                     </a>
-
-                    <!-- Bouton Calculateur -->
-                    <a href="calculateur.html" class="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-bois-50 hover:bg-bois-100 border border-bois-200 hover:border-bois-300 text-slate-700 hover:text-bois-800 font-semibold text-xs transition">
-                        <div class="w-6 h-6 rounded-lg bg-bois-200 text-bois-800 flex items-center justify-center text-[10px]">
-                            <i class="fa-solid fa-calculator"></i>
-                        </div>
+                    <a href="calculateur.html" class="flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-bois-50 hover:bg-bois-100 border border-bois-200 hover:border-bois-300 text-slate-700 hover:text-bois-800 font-semibold text-xs transition">
+                        <i class="fa-solid fa-calculator text-bois-800"></i>
                         <span>Calculateur</span>
                     </a>
-
-                    <!-- Bouton À Propos -->
-                    <a href="a-propos.html" class="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-bois-50 hover:bg-slate-100 border border-bois-200 text-slate-700 hover:text-slate-900 font-semibold text-xs transition">
-                        <div class="w-6 h-6 rounded-lg bg-slate-200 text-slate-700 flex items-center justify-center text-[10px]">
-                            <i class="fa-solid fa-circle-info"></i>
-                        </div>
+                    <a href="a-propos.html" class="flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-bois-50 hover:bg-slate-100 border border-bois-200 text-slate-700 hover:text-slate-900 font-semibold text-xs transition">
+                        <i class="fa-solid fa-circle-info text-slate-600"></i>
                         <span>À Propos</span>
                     </a>
-
                 </nav>
 
-                <!-- Bouton Menu Mobile -->
                 <button onclick="toggleMobileMenu()" class="lg:hidden text-slate-700 p-2 rounded-xl bg-bois-100 border border-bois-200">
                     <i class="fa-solid fa-bars text-lg"></i>
                 </button>
             </div>
         </div>
 
-        <!-- Menu Mobile -->
         <div id="mobileMenu" class="hidden lg:hidden bg-white border-b border-bois-200 px-4 pt-3 pb-5 space-y-2 mt-2">
-            <a href="index.html" class="flex items-center gap-3 p-2.5 rounded-xl bg-foret-50 border border-foret-500 font-bold text-foret-900 text-sm">
-                <i class="fa-solid fa-house text-foret-500 w-5 text-center"></i> Accueil
-            </a>
-            <a href="comparatif.html" class="flex items-center gap-3 p-2.5 rounded-xl bg-bois-50 text-slate-700 font-semibold text-sm">
-                <i class="fa-solid fa-house-chimney text-sauge-600 w-5 text-center"></i> Comparateur &amp; Tests
-            </a>
-            <a href="sante.html" class="flex items-center gap-3 p-2.5 rounded-xl bg-bois-50 text-slate-700 font-semibold text-sm">
-                <i class="fa-solid fa-notes-medical text-terracotta-600 w-5 text-center"></i> Santé Naturelle
-            </a>
-            <a href="calculateur.html" class="flex items-center gap-3 p-2.5 rounded-xl bg-bois-50 text-slate-700 font-semibold text-sm">
-                <i class="fa-solid fa-calculator text-bois-800 w-5 text-center"></i> Calculateur d'Œufs
-            </a>
-            <a href="a-propos.html" class="flex items-center gap-3 p-2.5 rounded-xl bg-bois-50 text-slate-700 font-semibold text-sm">
-                <i class="fa-solid fa-circle-info text-slate-600 w-5 text-center"></i> À Propos &amp; Contact
-            </a>
+            <a href="index.html" class="flex items-center gap-3 p-2.5 rounded-xl bg-foret-50 border border-foret-500 font-bold text-foret-900 text-sm"><i class="fa-solid fa-house text-foret-500 w-5"></i> Accueil</a>
+            <a href="comparatif.html" class="flex items-center gap-3 p-2.5 rounded-xl bg-bois-50 text-slate-700 font-semibold text-sm"><i class="fa-solid fa-house-chimney text-sauge-600 w-5"></i> Comparateur Poulaillers</a>
+            <a href="sante.html" class="flex items-center gap-3 p-2.5 rounded-xl bg-bois-50 text-slate-700 font-semibold text-sm"><i class="fa-solid fa-notes-medical text-terracotta-600 w-5"></i> Santé & Soins Naturels</a>
+            <a href="calculateur.html" class="flex items-center gap-3 p-2.5 rounded-xl bg-bois-50 text-slate-700 font-semibold text-sm"><i class="fa-solid fa-calculator text-bois-800 w-5"></i> Calculateur de Ponte</a>
+            <a href="a-propos.html" class="flex items-center gap-3 p-2.5 rounded-xl bg-bois-50 text-slate-700 font-semibold text-sm"><i class="fa-solid fa-circle-info text-slate-600 w-5"></i> À Propos & Contact</a>
         </div>
     </header>
 
-    <!-- Section Principale / Hero -->
-    <section class="bg-gradient-to-b from-bois-100 to-bois-50 py-16 sm:py-24 border-b border-bois-200">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
-            <span class="bg-sauge-100 text-foret-500 text-xs font-bold px-3.5 py-1.5 rounded-full border border-sauge-200 uppercase tracking-wider">Élevage Écologique &amp; Autonomie</span>
-            <h1 class="font-serif text-3xl sm:text-6xl font-bold text-foret-900 leading-tight">
-                Élever des poules heureuses &amp; récolter des œufs 100% bio
-            </h1>
-            <p class="text-slate-600 text-sm sm:text-lg max-w-2xl mx-auto leading-relaxed">
-                Guides pratiques, comparatifs de matériel durable et traitements naturels pour réussir votre poulailler familial sans produits chimiques.
-            </p>
-            <div class="flex flex-col sm:flex-row justify-center gap-4 pt-4">
-                <a href="comparatif.html" class="bg-foret-500 hover:bg-foret-800 text-white font-bold px-6 py-3.5 rounded-xl transition shadow-md text-sm">
-                    Voir le comparateur de poulaillers <i class="fa-solid fa-arrow-right ml-2"></i>
-                </a>
-                <a href="calculateur.html" class="bg-white hover:bg-bois-100 text-slate-800 border border-bois-200 font-bold px-6 py-3.5 rounded-xl transition text-sm">
-                    Calculer ma production d'œufs
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Section Découverte des Rubriques -->
-    <section class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
-        <div class="text-center space-y-3">
-            <h2 class="font-serif text-2xl sm:text-4xl font-bold text-foret-900">Tout ce qu'il faut savoir pour démarrer</h2>
-            <p class="text-slate-600 text-sm">Des réponses concrètes pour un poulailler sain au quotidien.</p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <a href="comparatif.html" class="bg-white p-8 rounded-3xl border border-bois-200 card-shadow hover:-translate-y-1 transition duration-200 space-y-4 block">
-                <div class="w-12 h-12 rounded-2xl bg-sauge-100 text-foret-500 flex items-center justify-center text-xl font-bold">
-                    <i class="fa-solid fa-house-chimney"></i>
-                </div>
-                <h3 class="font-serif text-xl font-bold text-foret-900">Poulaillers Éco-Responsables</h3>
-                <p class="text-xs text-slate-600 leading-relaxed">
-                    Comparatif complet des modèles en bois FSC et plastique recyclé imputrescible résistant aux parasites.
-                </p>
-                <span class="inline-flex items-center text-xs font-bold text-foret-500">
-                    Découvrir le comparatif <i class="fa-solid fa-chevron-right ml-1"></i>
-                </span>
-            </a>
-
-            <a href="sante.html" class="bg-white p-8 rounded-3xl border border-bois-200 card-shadow hover:-translate-y-1 transition duration-200 space-y-4 block">
-                <div class="w-12 h-12 rounded-2xl bg-terracotta-50 text-terracotta-600 flex items-center justify-center text-xl font-bold">
-                    <i class="fa-solid fa-notes-medical"></i>
-                </div>
-                <h3 class="font-serif text-xl font-bold text-foret-900">Santé &amp; Soins Bio</h3>
-                <p class="text-xs text-slate-600 leading-relaxed">
-                    Protocoles phytothérapie, terre de diatomée contre les poux rouges et recettes de vermifuges naturels.
-                </p>
-                <span class="inline-flex items-center text-xs font-bold text-terracotta-600">
-                    Voir les conseils santé <i class="fa-solid fa-chevron-right ml-1"></i>
-                </span>
-            </a>
-
-            <a href="calculateur.html" class="bg-white p-8 rounded-3xl border border-bois-200 card-shadow hover:-translate-y-1 transition duration-200 space-y-4 block">
-                <div class="w-12 h-12 rounded-2xl bg-bois-200 text-bois-800 flex items-center justify-center text-xl font-bold">
-                    <i class="fa-solid fa-calculator"></i>
-                </div>
-                <h3 class="font-serif text-xl font-bold text-foret-900">Simulateur d'Autonomie</h3>
-                <p class="text-xs text-slate-600 leading-relaxed">
-                    Estimez votre récolte d'œufs annuelle et calculez vos économies réalisées par rapport au supermarché.
-                </p>
-                <span class="inline-flex items-center text-xs font-bold text-bois-800">
-                    Lancer la simulation <i class="fa-solid fa-chevron-right ml-1"></i>
-                </span>
-            </a>
-        </div>
-    </section>
-
-    <!-- Pied de page / Footer -->
-    <footer class="bg-foret-900 text-bois-100 py-12 border-t border-foret-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-8 text-xs">
-            <div class="space-y-3">
-                <div class="flex items-center gap-2">
-                    <div class="w-8 h-8 rounded-xl bg-terracotta-600 text-white flex items-center justify-center">
-                        <i class="fa-solid fa-feather-pointed"></i>
+    <!-- HERO SECTION AVEC VISUEL DE POULES -->
+    <section class="relative bg-gradient-to-b from-bois-100 via-bois-50 to-white py-12 sm:py-16 border-b border-bois-200 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                
+                <!-- Contenu gauche -->
+                <div class="lg:col-span-7 space-y-5 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 bg-sauge-100 text-foret-900 text-xs font-bold px-3.5 py-1.5 rounded-full border border-sauge-200 shadow-sm">
+                        <i class="fa-solid fa-seedling text-sauge-600"></i>
+                        <span>Conseils Pratiques & Matériel Testé en Jardin</span>
                     </div>
-                    <span class="font-serif font-bold text-lg text-white">Mon Poulailler Bio</span>
-                </div>
-                <p class="text-slate-400">Guide indépendant et comparatif d'équipements écologiques pour l’élevage avicole familial.</p>
-            </div>
-            <div>
-                <h4 class="font-bold text-white uppercase tracking-wider mb-3">Navigation</h4>
-                <ul class="space-y-2 text-slate-300">
-                    <li><a href="index.html" class="hover:text-amber-300 transition">Accueil</a></li>
-                    <li><a href="comparatif.html" class="hover:text-amber-300 transition">Comparateur &amp; Tests</a></li>
-                    <li><a href="sante.html" class="hover:text-amber-300 transition">Santé Naturelle</a></li>
-                    <li><a href="calculateur.html" class="hover:text-amber-300 transition">Calculateur d'Œufs</a></li>
-                    <li><a href="a-propos.html" class="hover:text-amber-300 transition">À Propos</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4 class="font-bold text-white uppercase tracking-wider mb-3">Engagements</h4>
-                <ul class="space-y-2 text-slate-300">
-                    <li>100% Indépendant</li>
-                    <li>Tests en conditions réelles</li>
-                    <li>Mises à jour fréquentes</li>
-                </ul>
-            </div>
-            <div>
-                <h4 class="font-bold text-white uppercase tracking-wider mb-3">Mentions</h4>
-                <p class="text-slate-400 leading-relaxed">© 2026 Mon Poulailler Bio. Tous droits réservés.</p>
-            </div>
-        </div>
-    </footer>
 
-    <script>
-        function toggleMobileMenu() {
-            document.getElementById('mobileMenu').classList.toggle('hidden');
-        }
-    </script>
-</body>
-</html>
+                    <h1 class="font-serif text-3xl sm:text-5xl font-bold text-foret-900 leading-tight">
+                        Réussir son élevage de poules bio & choisir le bon matériel
+                    </h1>
+
+                    <p class="text-slate-600 text-sm sm:text-base leading-relaxed max-w-xl">
+                        Des bancs d'essais impartiaux sur les poulaillers (plastique anti-poux rouges vs bois FSC), des soins naturels et un calculateur d'autonomie.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row justify-center lg:justify-start items-center gap-3 pt-2">
+                        <a href="comparatif.html" class="w-full sm:w-auto bg-foret-500 hover:bg-foret-800 text-white font-bold px-6 py-3.5 rounded-xl transition shadow-md text-xs sm:text-sm flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-layer-group"></i> Voir le comparateur de poulaillers
+                        </a>
+                        <a href="calculateur.html" class="w-full sm:w-auto bg-white hover:bg-bois-100 text-slate-800 border border-bois-200 font-bold px-6 py-3.5 rounded-xl transition text-xs sm:text-sm flex items-center justify-center gap-2 shadow-sm">
+                            <i class="fa-solid fa-calculator text-bois-700"></i> Simuler ma ponte
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Image de poules à droite -->
+                <div class="lg:col-span-5 relative">
+                    <div class="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white">
+                        <img src="https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?auto=format&fit=crop&w=800&q=80" alt="Poules rousses dans le jardin" class="w-full h-80 lg:h-96 object-cover transform hover:scale-105 transition duration-500">
+                        <div class="absolute bottom-3 left-3 right-3 bg-white/90 backdrop-blur-md p-3 rounded-2xl border border-white/50 text-xs flex items-center justify-between">
+                            <div class="flex items-center gap-2">
+                                <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+                                <span class="font-bold text-foret-900">Poules en plein air</span>
+                            </div>
+                            <span class="text-[10px] bg-bois-200 text-bois-800 px-2 py-0.5 rounded-md font-semibold">Élevage Bio</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Badges -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-7xl mx-auto pt-10 mt-8 border-t border-bois-200/80">
+                <div class="flex items-center gap-3 bg-white p-3.5 rounded-2xl border border-bois-200 shadow-sm">
+                    <i class="fa-solid fa-bug-slash text-terracotta-600 text-xl"></i>
+                    <div>
+                        <span class="block text-xs font-bold text-foret-900">Anti-Poux Rouges</span>
+                        <span class="text-[10px] text-slate-500">Tests étanchéité & hygiène</span>
+                    </div>
+                </div>
+                <div class="flex items-center gap-3 bg-white p-3.5 rounded-2xl border border-bois-200 shadow-sm">
+                    <i class="fa-solid fa-shield-cat text-foret-600 text-xl"></i>
+                    <div>
+                        <span class="block text-xs font-bold text-foret-900">Protection Renard</span>
+                        <span class="text-[10px] text-slate-500">Portes auto & grillages</span>
+                    </div>
+                </div>
+                <div class="flex items-center
