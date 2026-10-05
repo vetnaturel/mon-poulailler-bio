@@ -36,113 +36,323 @@
         ::-webkit-scrollbar-track { background: #F3ECE2; }
         ::-webkit-scrollbar-thumb { background: #4D6F4F; border-radius: 4px; }
         .card-shadow { box-shadow: 0 10px 30px -8px rgba(27, 60, 43, 0.08); }
-        .cta-shadow { box-shadow: 0 10px 25px -5px rgba(217, 107, 67, 0.4); }
     </style>
 </head>
 <body class="bg-bois-50 text-slate-800 font-sans antialiased selection:bg-terracotta-500 selection:text-white">
 
-    <!-- Top Bar -->
+    <!-- Bandeau Supérieur -->
     <div class="bg-foret-900 text-bois-100 text-xs sm:text-sm py-2 px-4 text-center font-medium border-b border-foret-800">
         <span>📊 Comparatif mis à jour en <strong>Octobre 2026</strong> sur la base de nos tests terrain indépendants.</span>
     </div>
 
-    <!-- Navigation Header -->
-    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-bois-200 shadow-sm">
+    <!-- En-tête de Navigation -->
+    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-bois-200 shadow-sm py-2.5">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-20">
-                <a href="index.html" class="flex items-center gap-3 group">
-                    <div class="w-11 h-11 rounded-2xl bg-foret-500 text-white flex items-center justify-center shadow-md group-hover:bg-terracotta-600 transition-colors">
-                        <i class="fa-solid fa-feather-pointed text-xl"></i>
+            <div class="flex items-center justify-between gap-2">
+                
+                <!-- Logo -->
+                <a href="index.html" class="flex items-center gap-2.5 shrink-0 group">
+                    <div class="w-10 h-10 rounded-xl bg-foret-500 text-white flex items-center justify-center shadow-md group-hover:bg-terracotta-600 transition-colors">
+                        <i class="fa-solid fa-feather-pointed text-lg"></i>
                     </div>
                     <div>
-                        <span class="font-serif text-xl sm:text-2xl font-bold text-foret-900 tracking-tight block leading-none">Mon Poulailler <span class="text-terracotta-600">Bio</span></span>
-                        <span class="text-[10px] font-semibold uppercase tracking-wider text-bois-700">Guide &amp; Élevage Familial</span>
+                        <span class="font-serif text-lg sm:text-xl font-bold text-foret-900 tracking-tight block leading-none">Mon Poulailler <span class="text-terracotta-600">Bio</span></span>
+                        <span class="text-[9px] font-semibold uppercase tracking-wider text-bois-700">Guide &amp; Élevage</span>
                     </div>
                 </a>
 
-                <nav class="hidden lg:flex items-center space-x-8 font-medium text-sm text-slate-700">
-                    <a href="index.html" class="hover:text-foret-500 transition-colors">Accueil</a>
-                    <a href="comparatif.html" class="text-foret-500 font-bold">Comparateur &amp; Tests</a>
-                    <a href="sante.html" class="hover:text-foret-500 transition-colors">Santé Naturelle</a>
-                    <a href="calculateur.html" class="hover:text-foret-500 transition-colors">Calculateur d'Œufs</a>
-                    <a href="a-propos.html" class="hover:text-foret-500 transition-colors">À Propos</a>
+                <!-- Navigation Ordinateur -->
+                <nav class="hidden lg:flex items-center gap-1.5 shrink-0">
+                    <a href="index.html" class="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-bois-50 hover:bg-foret-50 border border-bois-200 text-slate-700 hover:text-foret-900 font-semibold text-xs transition">
+                        <div class="w-6 h-6 rounded-lg bg-slate-200 text-slate-700 flex items-center justify-center text-[10px]">
+                            <i class="fa-solid fa-house"></i>
+                        </div>
+                        <span>Accueil</span>
+                    </a>
+
+                    <a href="comparatif.html" class="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-foret-50 border border-foret-500 text-foret-900 font-bold text-xs shadow-sm transition">
+                        <div class="w-6 h-6 rounded-lg bg-foret-500 text-white flex items-center justify-center text-[10px]">
+                            <i class="fa-solid fa-house-chimney"></i>
+                        </div>
+                        <span>Comparateur</span>
+                    </a>
+
+                    <a href="sante.html" class="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-bois-50 hover:bg-terracotta-50 border border-bois-200 hover:border-terracotta-300 text-slate-700 hover:text-terracotta-700 font-semibold text-xs transition">
+                        <div class="w-6 h-6 rounded-lg bg-terracotta-50 text-terracotta-600 flex items-center justify-center text-[10px]">
+                            <i class="fa-solid fa-notes-medical"></i>
+                        </div>
+                        <span>Santé Bio</span>
+                    </a>
+
+                    <a href="calculateur.html" class="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-bois-50 hover:bg-bois-100 border border-bois-200 hover:border-bois-300 text-slate-700 hover:text-bois-800 font-semibold text-xs transition">
+                        <div class="w-6 h-6 rounded-lg bg-bois-200 text-bois-800 flex items-center justify-center text-[10px]">
+                            <i class="fa-solid fa-calculator"></i>
+                        </div>
+                        <span>Calculateur</span>
+                    </a>
+
+                    <a href="a-propos.html" class="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-bois-50 hover:bg-slate-100 border border-bois-200 text-slate-700 hover:text-slate-900 font-semibold text-xs transition">
+                        <div class="w-6 h-6 rounded-lg bg-slate-200 text-slate-700 flex items-center justify-center text-[10px]">
+                            <i class="fa-solid fa-circle-info"></i>
+                        </div>
+                        <span>À Propos</span>
+                    </a>
                 </nav>
 
-                <button onclick="toggleMobileMenu()" class="lg:hidden text-slate-700 p-2">
-                    <i class="fa-solid fa-bars text-xl"></i>
+                <button onclick="toggleMobileMenu()" class="lg:hidden text-slate-700 p-2 rounded-xl bg-bois-100 border border-bois-200">
+                    <i class="fa-solid fa-bars text-lg"></i>
                 </button>
             </div>
         </div>
 
-        <div id="mobileMenu" class="hidden lg:hidden bg-white border-b border-bois-200 px-4 pt-2 pb-6 space-y-3">
-            <a href="index.html" class="block py-2 text-slate-700 font-medium">Accueil</a>
-            <a href="comparatif.html" class="block py-2 text-foret-500 font-bold">Comparateur &amp; Tests</a>
-            <a href="sante.html" class="block py-2 text-slate-700 font-medium">Santé Naturelle</a>
-            <a href="calculateur.html" class="block py-2 text-slate-700 font-medium">Calculateur d'Œufs</a>
-            <a href="a-propos.html" class="block py-2 text-slate-700 font-medium">À Propos</a>
+        <div id="mobileMenu" class="hidden lg:hidden bg-white border-b border-bois-200 px-4 pt-3 pb-5 space-y-2 mt-2">
+            <a href="index.html" class="flex items-center gap-3 p-2.5 rounded-xl bg-bois-50 text-slate-700 font-semibold text-sm">
+                <i class="fa-solid fa-house text-slate-600 w-5 text-center"></i> Accueil
+            </a>
+            <a href="comparatif.html" class="flex items-center gap-3 p-2.5 rounded-xl bg-foret-50 border border-foret-500 font-bold text-foret-900 text-sm">
+                <i class="fa-solid fa-house-chimney text-foret-500 w-5 text-center"></i> Comparateur &amp; Tests
+            </a>
+            <a href="sante.html" class="flex items-center gap-3 p-2.5 rounded-xl bg-bois-50 text-slate-700 font-semibold text-sm">
+                <i class="fa-solid fa-notes-medical text-terracotta-600 w-5 text-center"></i> Santé Naturelle
+            </a>
+            <a href="calculateur.html" class="flex items-center gap-3 p-2.5 rounded-xl bg-bois-50 text-slate-700 font-semibold text-sm">
+                <i class="fa-solid fa-calculator text-bois-800 w-5 text-center"></i> Calculateur d'Œufs
+            </a>
+            <a href="a-propos.html" class="flex items-center gap-3 p-2.5 rounded-xl bg-bois-50 text-slate-700 font-semibold text-sm">
+                <i class="fa-solid fa-circle-info text-slate-600 w-5 text-center"></i> À Propos &amp; Contact
+            </a>
         </div>
     </header>
 
-    <!-- Page Title Header -->
-    <section class="bg-gradient-to-b from-bois-100 to-bois-50 py-12 border-b border-bois-200">
+    <!-- Header Section -->
+    <section class="bg-gradient-to-b from-bois-100 to-bois-50 py-12 sm:py-16 border-b border-bois-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
-            <span class="bg-sauge-100 text-foret-500 text-xs font-bold px-3 py-1.5 rounded-full border border-sauge-200 uppercase tracking-wider">Banc d'essai 2026</span>
-            <h1 class="font-serif text-3xl sm:text-5xl font-bold text-foret-900">Comparateur des Meilleurs Poulaillers</h1>
+            <span class="bg-sauge-100 text-foret-500 text-xs font-bold px-3.5 py-1.5 rounded-full border border-sauge-200 uppercase tracking-wider">Banc d'Essai 2026</span>
+            <h1 class="font-serif text-3xl sm:text-5xl font-bold text-foret-900">
+                Comparateur des Meilleurs Poulaillers
+            </h1>
             <p class="text-slate-600 text-sm sm:text-base max-w-2xl mx-auto">
                 Analyse comparative des modèles phares du marché : résistance aux poux rouges, étanchéité, facilité de nettoyage et sécurité prédateurs.
             </p>
         </div>
     </section>
 
-    <!-- Main Content & Table Section -->
-    <section class="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-
-        <!-- Controls: Filters & Search -->
-        <div class="bg-white p-4 sm:p-6 rounded-2xl border border-bois-200 card-shadow flex flex-col md:flex-row items-center justify-between gap-4">
-            
-            <!-- Category Filter Buttons -->
-            <div class="flex flex-wrap items-center gap-2 w-full md:w-auto">
-                <span class="text-xs font-bold text-slate-500 mr-2 uppercase">Filtrer par :</span>
-                <button onclick="filterMaterial('all', this)" class="btn-filter bg-foret-500 text-white text-xs font-bold px-4 py-2 rounded-xl transition">Tous les modèles</button>
-                <button onclick="filterMaterial('plastique', this)" class="btn-filter bg-bois-100 text-slate-700 hover:bg-bois-200 text-xs font-bold px-4 py-2 rounded-xl transition">Plastique Recyclé</button>
-                <button onclick="filterMaterial('bois', this)" class="btn-filter bg-bois-100 text-slate-700 hover:bg-bois-200 text-xs font-bold px-4 py-2 rounded-xl transition">Bois Traité</button>
+    <!-- Content & Table -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
+        
+        <!-- Filtres et Recherche -->
+        <div class="bg-white p-4 rounded-2xl border border-bois-200 card-shadow flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-2 w-full md:w-auto overflow-x-auto pb-2 md:pb-0">
+                <span class="text-xs font-bold uppercase text-slate-500 mr-2">Filtrer par :</span>
+                <button onclick="filterTable('all')" class="filter-btn active bg-foret-500 text-white text-xs font-bold px-3.5 py-2 rounded-xl transition">Tous les modèles</button>
+                <button onclick="filterTable('plastique')" class="filter-btn bg-bois-100 hover:bg-bois-200 text-slate-700 text-xs font-bold px-3.5 py-2 rounded-xl transition">Plastique Recyclé</button>
+                <button onclick="filterTable('bois')" class="filter-btn bg-bois-100 hover:bg-bois-200 text-slate-700 text-xs font-bold px-3.5 py-2 rounded-xl transition">Bois Traité</button>
             </div>
-
-            <!-- Instant Search -->
-            <div class="relative w-full md:w-72">
-                <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
-                <input type="text" id="searchInput" onkeyup="searchModels()" placeholder="Chercher un modèle..." class="w-full bg-bois-50 border border-bois-200 rounded-xl pl-9 pr-4 py-2 text-xs font-medium text-slate-800 focus:outline-none focus:border-foret-500 transition">
+            <div class="relative w-full md:w-64">
+                <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+                <input type="text" id="searchInput" onkeyup="searchTable()" placeholder="Chercher un modèle..." class="w-full pl-9 pr-3 py-2 bg-bois-50 border border-bois-200 rounded-xl text-xs focus:outline-none focus:border-foret-500">
             </div>
         </div>
 
-        <!-- Comparison Table -->
-        <div class="bg-white rounded-3xl border border-bois-200 card-shadow overflow-hidden">
-            <div class="overflow-x-auto">
-                <table class="w-full text-left text-xs sm:text-sm">
-                    <thead class="bg-foret-900 text-bois-100 font-serif border-b border-foret-800">
-                        <tr>
-                            <th class="p-4 sm:p-5">Modèle &amp; Marque</th>
-                            <th class="p-4 sm:p-5">Capacité</th>
-                            <th class="p-4 sm:p-5">Matériau</th>
-                            <th class="p-4 sm:p-5">Anti-Poux Rouges</th>
-                            <th class="p-4 sm:p-5">Protection Prédateurs</th>
-                            <th class="p-4 sm:p-5">Prix Est.</th>
-                            <th class="p-4 sm:p-5 text-center">Action</th>
-                        </tr>
-                    </thead>
-                    <tbody class="divide-y divide-bois-100 font-medium">
-                        
-                        <!-- Item 1 -->
-                        <tr class="model-row transition hover:bg-bois-50/60" data-material="plastique" data-name="omlet eglu cube pro">
-                            <td class="p-4 sm:p-5">
-                                <div class="flex items-center gap-3">
-                                    <div class="w-10 h-10 rounded-xl bg-bois-100 flex-shrink-0 overflow-hidden">
-                                        <img src="https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?auto=format&amp;fit=crop&amp;w=150&amp;q=80" alt="Omlet Eglu Cube" class="w-full h-full object-cover">
-                                    </div>
-                                    <div>
-                                        <span class="font-serif font-bold text-slate-900 block">Omlet Eglu Cube Pro</span>
-                                        <span class="text-[10px] text-terracotta-600 font-extrabold uppercase">⭐ Choix de la Rédaction</span>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="p-4
+        <!-- Tableau Comparatif -->
+        <div class="bg-white rounded-2xl border border-bois-200 card-shadow overflow-x-auto">
+            <table class="w-full text-left text-xs border-collapse">
+                <thead>
+                    <tr class="bg-foret-900 text-white uppercase font-bold text-[11px] tracking-wider border-b border-foret-800">
+                        <th class="p-4">Modèle &amp; Marque</th>
+                        <th class="p-4">Capacité</th>
+                        <th class="p-4">Matériau</th>
+                        <th class="p-4">Anti-Poux Rouges</th>
+                        <th class="p-4">Protection Prédateurs</th>
+                        <th class="p-4">Prix Est.</th>
+                        <th class="p-4 text-center">Action</th>
+                    </tr>
+                </thead>
+                <tbody id="poulaillerTable" class="divide-y divide-bois-200 text-slate-700 font-medium">
+                    
+                    <!-- Modèle 1 -->
+                    <tr class="item-row hover:bg-bois-50 transition" data-category="plastique">
+                        <td class="p-4">
+                            <div class="font-bold text-foret-900 text-sm">Omlet Eglu Cube Pro</div>
+                            <span class="inline-block bg-amber-100 text-amber-800 text-[10px] px-2 py-0.5 rounded font-bold mt-1">⭐ Choix de la rédaction</span>
+                        </td>
+                        <td class="p-4 font-semibold">4 à 10 poules</td>
+                        <td class="p-4">Plastique Recyclé (Double paroi)</td>
+                        <td class="p-4 text-emerald-600 font-bold"><i class="fa-solid fa-circle-check mr-1"></i> Max (10/10)</td>
+                        <td class="p-4 text-emerald-600 font-bold"><i class="fa-solid fa-shield-halved mr-1"></i> Optimale</td>
+                        <td class="p-4 font-bold text-slate-900">~ 850 €</td>
+                        <td class="p-4 text-center">
+                            <a href="#" target="_blank" rel="nofollow noopener" class="inline-block bg-terracotta-600 hover:bg-terracotta-700 text-white font-bold px-3 py-2 rounded-xl text-xs transition">
+                                Offre Promo <i class="fa-solid fa-up-right-from-square ml-1 text-[10px]"></i>
+                            </a>
+                        </td>
+                    </tr>
+
+                    <!-- Modèle 2 -->
+                    <tr class="item-row hover:bg-bois-50 transition" data-category="plastique">
+                        <td class="p-4">
+                            <div class="font-bold text-foret-900 text-sm">Nestera Grande Taille</div>
+                            <span class="inline-block bg-emerald-100 text-emerald-800 text-[10px] px-2 py-0.5 rounded font-bold mt-1">🌿 100% Recyclé</span>
+                        </td>
+                        <td class="p-4 font-semibold">6 à 8 poules</td>
+                        <td class="p-4">Plastique PEHD 9mm</td>
+                        <td class="p-4 text-emerald-600 font-bold"><i class="fa-solid fa-circle-check mr-1"></i> Très élevé (9.5/10)</td>
+                        <td class="p-4 text-emerald-600 font-bold"><i class="fa-solid fa-shield-halved mr-1"></i> Élevée</td>
+                        <td class="p-4 font-bold text-slate-900">~ 690 €</td>
+                        <td class="p-4 text-center">
+                            <a href="#" target="_blank" rel="nofollow noopener" class="inline-block bg-foret-500 hover:bg-foret-800 text-white font-bold px-3 py-2 rounded-xl text-xs transition">
+                                Voir le prix <i class="fa-solid fa-up-right-from-square ml-1 text-[10px]"></i>
+                            </a>
+                        </td>
+                    </tr>
+
+                    <!-- Modèle 3 -->
+                    <tr class="item-row hover:bg-bois-50 transition" data-category="bois">
+                        <td class="p-4">
+                            <div class="font-bold text-foret-900 text-sm">La Ferme de Beaumont - Gauthière</div>
+                            <span class="inline-block bg-bois-200 text-bois-800 text-[10px] px-2 py-0.5 rounded font-bold mt-1">🪵 Bois FSC Robuste</span>
+                        </td>
+                        <td class="p-4 font-semibold">3 à 5 poules</td>
+                        <td class="p-4">Sapin Traité &amp; Toit Bitumé</td>
+                        <td class="p-4 text-amber-600 font-bold"><i class="fa-solid fa-triangle-exclamation mr-1"></i> Moyen (Traiter régulièrement)</td>
+                        <td class="p-4 text-emerald-600 font-bold"><i class="fa-solid fa-shield-halved mr-1"></i> Bon verrouillage</td>
+                        <td class="p-4 font-bold text-slate-900">~ 340 €</td>
+                        <td class="p-4 text-center">
+                            <a href="#" target="_blank" rel="nofollow noopener" class="inline-block bg-foret-500 hover:bg-foret-800 text-white font-bold px-3 py-2 rounded-xl text-xs transition">
+                                Voir le prix <i class="fa-solid fa-up-right-from-square ml-1 text-[10px]"></i>
+                            </a>
+                        </td>
+                    </tr>
+
+                    <!-- Modèle 4 -->
+                    <tr class="item-row hover:bg-bois-50 transition" data-category="plastique">
+                        <td class="p-4">
+                            <div class="font-bold text-foret-900 text-sm">Omlet Eglu Go UP</div>
+                            <span class="inline-block bg-sauge-100 text-foret-600 text-[10px] px-2 py-0.5 rounded font-bold mt-1">🐥 Idéal Débutant</span>
+                        </td>
+                        <td class="p-4 font-semibold">2 à 4 poules</td>
+                        <td class="p-4">Plastique Recyclé Surélevé</td>
+                        <td class="p-4 text-emerald-600 font-bold"><i class="fa-solid fa-circle-check mr-1"></i> Max (10/10)</td>
+                        <td class="p-4 text-emerald-600 font-bold"><i class="fa-solid fa-shield-halved mr-1"></i> Grillage Anti-Renard</td>
+                        <td class="p-4 font-bold text-slate-900">~ 480 €</td>
+                        <td class="p-4 text-center">
+                            <a href="#" target="_blank" rel="nofollow noopener" class="inline-block bg-foret-500 hover:bg-foret-800 text-white font-bold px-3 py-2 rounded-xl text-xs transition">
+                                Voir le prix <i class="fa-solid fa-up-right-from-square ml-1 text-[10px]"></i>
+                            </a>
+                        </td>
+                    </tr>
+
+                    <!-- Modèle 5 -->
+                    <tr class="item-row hover:bg-bois-50 transition" data-category="bois">
+                        <td class="p-4">
+                            <div class="font-bold text-foret-900 text-sm">Poulailler CHICKEN'S CLUB</div>
+                            <span class="inline-block bg-slate-100 text-slate-700 text-[10px] px-2 py-0.5 rounded font-bold mt-1">💰 Petit Budget</span>
+                        </td>
+                        <td class="p-4 font-semibold">2 à 3 poules</td>
+                        <td class="p-4">Bois de Pin Léger</td>
+                        <td class="p-4 text-rose-600 font-bold"><i class="fa-solid fa-xmark mr-1"></i> Faible (Surveillance poux)</td>
+                        <td class="p-4 text-amber-600 font-bold"><i class="fa-solid fa-shield-halved mr-1"></i> Renforcer le loquet</td>
+                        <td class="p-4 font-bold text-slate-900">~ 180 €</td>
+                        <td class="p-4 text-center">
+                            <a href="#" target="_blank" rel="nofollow noopener" class="inline-block bg-foret-500 hover:bg-foret-800 text-white font-bold px-3 py-2 rounded-xl text-xs transition">
+                                Voir le prix <i class="fa-solid fa-up-right-from-square ml-1 text-[10px]"></i>
+                            </a>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Note comparative -->
+        <div class="bg-sauge-50 border border-sauge-200 p-6 rounded-2xl text-xs leading-relaxed text-foret-900 space-y-2">
+            <h3 class="font-bold text-sm flex items-center gap-2">
+                <i class="fa-solid fa-lightbulb text-amber-500"></i> Pourquoi nous recommandons le plastique PEHD en 2026 :
+            </h3>
+            <p>
+                Le pou rouge est le fléau n°1 des élevages familiaux. Les poulaillers en bois possèdent de nombreuses micro-fissures où les parasites se multiplient. Les modèles en plastique recyclé se nettoient intégralement au nettoyeur haute pression et éradiquent 99% des risques d'infestation.
+            </p>
+        </div>
+
+    </main>
+
+    <!-- Pied de page / Footer -->
+    <footer class="bg-foret-900 text-bois-100 py-12 border-t border-foret-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-8 text-xs">
+            <div class="space-y-3">
+                <div class="flex items-center gap-2">
+                    <div class="w-8 h-8 rounded-xl bg-terracotta-600 text-white flex items-center justify-center">
+                        <i class="fa-solid fa-feather-pointed"></i>
+                    </div>
+                    <span class="font-serif font-bold text-lg text-white">Mon Poulailler Bio</span>
+                </div>
+                <p class="text-slate-400">Guide indépendant et comparatif d'équipements écologiques pour l’élevage avicole familial.</p>
+            </div>
+            <div>
+                <h4 class="font-bold text-white uppercase tracking-wider mb-3">Navigation</h4>
+                <ul class="space-y-2 text-slate-300">
+                    <li><a href="index.html" class="hover:text-amber-300 transition">Accueil</a></li>
+                    <li><a href="comparatif.html" class="hover:text-amber-300 transition">Comparateur &amp; Tests</a></li>
+                    <li><a href="sante.html" class="hover:text-amber-300 transition">Santé Naturelle</a></li>
+                    <li><a href="calculateur.html" class="hover:text-amber-300 transition">Calculateur d'Œufs</a></li>
+                    <li><a href="a-propos.html" class="hover:text-amber-300 transition">À Propos</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold text-white uppercase tracking-wider mb-3">Engagements</h4>
+                <ul class="space-y-2 text-slate-300">
+                    <li>100% Indépendant</li>
+                    <li>Tests en conditions réelles</li>
+                    <li>Mises à jour fréquentes</li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold text-white uppercase tracking-wider mb-3">Mentions</h4>
+                <p class="text-slate-400 leading-relaxed">© 2026 Mon Poulailler Bio. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts pour les filtres et la recherche -->
+    <script>
+        function toggleMobileMenu() {
+            document.getElementById('mobileMenu').classList.toggle('hidden');
+        }
+
+        function filterTable(category) {
+            const rows = document.querySelectorAll('.item-row');
+            const buttons = document.querySelectorAll('.filter-btn');
+
+            buttons.forEach(btn => {
+                btn.classList.remove('bg-foret-500', 'text-white');
+                btn.classList.add('bg-bois-100', 'text-slate-700');
+            });
+
+            event.target.classList.remove('bg-bois-100', 'text-slate-700');
+            event.target.classList.add('bg-foret-500', 'text-white');
+
+            rows.forEach(row => {
+                if (category === 'all' || row.getAttribute('data-category') === category) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        }
+
+        function searchTable() {
+            const input = document.getElementById('searchInput').value.toLowerCase();
+            const rows = document.querySelectorAll('.item-row');
+
+            rows.forEach(row => {
+                const text = row.innerText.toLowerCase();
+                if (text.includes(input)) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
