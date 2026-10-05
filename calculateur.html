@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculateur de Ponte & Économies - Mon Poulailler Bio</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        sauge: { 50: '#F4F7F4', 100: '#E6EFE6', 200: '#C8DCC9', 600: '#648A66', 700: '#4D6F4F' },
+                        foret: { 500: '#2E5A44', 800: '#1B3C2B', 900: '#122B1E' },
+                        bois: { 50: '#FAF7F2', 100: '#F3ECE2', 200: '#E5D6C3', 300: '#D8C3A5', 700: '#7A5C43', 800: '#5A412E' },
+                        terracotta: { 50: '#FDF6F0', 200: '#F5C6B3', 500: '#E27A56', 600: '#D96B43', 700: '#B8522E' }
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        serif: ['"Lora"', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #F3ECE2; }
+        ::-webkit-scrollbar-thumb { background: #4D6F4F; border-radius: 4px; }
+        .card-shadow { box-shadow: 0 10px 30px -8px rgba(27, 60, 43, 0.08); }
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 22px;
+            width: 22px;
+            border-radius: 50%;
+            background: #E27A56;
+            cursor: pointer;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body class="bg-bois-50 text-slate-800 font-sans antialiased selection:bg-terracotta-500 selection:text-white">
+
+    <!-- Top Bar -->
+    <div class="bg-foret-900 text-bois-100 text-xs sm:text-sm py-2 px-4 text-center font-medium border-b border-foret-800">
+        <span>🧮 Simulez l'autonomie en œufs bio de votre foyer pour <strong>2026</strong>.</span>
+    </div>
+
+    <!-- Navigation Header -->
+    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-bois-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <a href="index.html" class="flex items-center gap-3 group">
+                    <div class="w-11 h-11 rounded-2xl bg-foret-500 text-white flex items-center justify-center shadow-md group-hover:bg-terracotta-600 transition-colors">
+                        <i class="fa-solid fa-feather-pointed text-xl"></i>
+                    </div>
+                    <div>
+                        <span class="font-serif text-xl sm:text-2xl font-bold text-foret-900 tracking-tight block leading-none">Mon Poulailler <span class="text-terracotta-600">Bio</span></span>
+                        <span class="text-[10px] font-semibold uppercase tracking-wider text-bois-700">Guide &amp; Élevage Familial</span>
+                    </div>
+                </a>
+
+                <nav class="hidden lg:flex items-center space-x-8 font-medium text-sm text-slate-700">
+                    <a href="index.html" class="hover:text-foret-500 transition-colors">Accueil</a>
+                    <a href="comparatif.html" class="hover:text-foret-500 transition-colors">Comparateur &amp; Tests</a>
+                    <a href="sante.html" class="hover:text-foret-500 transition-colors">Santé Naturelle</a>
+                    <a href="calculateur.html" class="text-foret-500 font-bold">Calculateur d'Œufs</a>
+                    <a href="a-propos.html" class="hover:text-foret-500 transition-colors">À Propos</a>
+                </nav>
+
+                <button onclick="toggleMobileMenu()" class="lg:hidden text-slate-700 p-2">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <div id="mobileMenu" class="hidden lg:hidden bg-white border-b border-bois-200 px-4 pt-2 pb-6 space-y-3">
+            <a href="index.html" class="block py-2 text-slate-700 font-medium">Accueil</a>
+            <a href="comparatif.html" class="block py-2 text-slate-700 font-medium">Comparateur &amp; Tests</a>
+            <a href="sante.html" class="block py-2 text-slate-700 font-medium">Santé Naturelle</a>
+            <a href="calculateur.html" class="block py-2 text-foret-500 font-bold">Calculateur d'Œufs</a>
+            <a href="a-propos.html" class="block py-2 text-slate-700 font-medium">À Propos</a>
+        </div>
+    </header>
+
+    <!-- Page Title Header -->
+    <section class="bg-gradient-to-b from-bois-100 to-bois-50 py-12 border-b border-bois-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
+            <span class="bg-sauge-100 text-foret-500 text-xs font-bold px-3 py-1.5 rounded-full border border-sauge-200 uppercase tracking-wider">Outil Interactif</span>
+            <h1 class="font-serif text-3xl sm:text-5xl font-bold text-foret-900">Simulateur de Production d'Œufs</h1>
+            <p class="text-slate-600 text-sm sm:text-base max-w-2xl mx-auto">
+                Calculez en temps réel le nombre d'œufs frais récoltés par an, les économies réalisées par rapport au supermarché et la valorisation de vos déchets de cuisine.
+            </p>
+        </div>
+    </section>
+
+    <!-- Main Content: Calculator -->
+    <section class="py-12 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            
+            <!-- Controls Panel -->
+            <div class="lg:col-span-6 bg-white p-6 sm:p-8 rounded-3xl border border-bois-200 card-shadow space-y-6">
+                <h3 class="font-serif text-xl font-bold text-foret-900 border-b border-bois-100 pb-3 flex items-center gap-2">
+                    <i class="fa-solid fa-sliders text-terracotta-600"></i> Vos Paramètres
+                </h3>
+
+                <!-- Input 1: Number of Hens -->
+                <div class="space-y-2">
+                    <div class="flex justify-between items-center text-sm">
+                        <label for="henCount" class="font-bold text-slate-700">Nombre de poules :</label>
+                        <span id="henCountVal" class="font-extrabold text-foret-500 bg-sauge-100 px-3 py-1 rounded-lg text-base">4 poules</span>
+                    </div>
+                    <input type="range" id="henCount" min="1" max="12" value="4" oninput="updateCalculator()" class="w-full h-2 bg-bois-200 rounded-lg appearance-none cursor-pointer">
+                </div>
+
+                <!-- Input 2: Breed Profile -->
+                <div class="space-y-2">
+                    <label for="breedType" class="font-bold text-slate-700 text-sm block">Type / Race de poules :</label>
+                    <select id="breedType" onchange="updateCalculator()" class="w-full bg-bois-50 border border-bois-200 rounded-xl px-3 py-2.5 text-xs font-semibold text-slate-800 focus:outline-none focus:border-foret-500 transition">
+                        <option value="250">Excellente pondeuse (ex: Redline, Sussex) ~250 œufs/an</option>
+                        <option value="200" selected>Race rustique / Pondeuse moyenne ~200 œufs/an</option>
+                        <option value="140">Race ornementale (ex: Soie, Padoue) ~140 œufs/an</option>
+                    </select>
+                </div>
+
+                <!-- Input 3: Price per Bio Egg in Store -->
+                <div class="space-y-2">
+                    <div class="flex justify-between items-center text-sm">
+                        <label for="eggPrice" class="font-bold text-slate-700">Prix de l'œuf bio en magasin :</label>
+                        <span id="eggPriceVal" class="font-extrabold text-terracotta-600 bg-terracotta-50 px-3 py-1 rounded-lg text-base">0.45 €</span>
+                    </div>
+                    <input type="range" id="eggPrice" min="0.25" max="0.75" step="0.05" value="0.45" oninput="updateCalculator()" class="w-full h-2 bg-bois-200 rounded-lg appearance-none cursor-pointer">
+                </div>
+
+                <div class="bg-bois-50 p-4 rounded-2xl border border-bois-200 text-xs text-slate-600 space-y-1">
+                    <span class="font-bold text-slate-800"><i class="fa-solid fa-circle-info text-sauge-600 mr-1"></i> Note d'estimation :</span>
+                    <p>Le calcul prend en compte une pause hivernale naturelle de ponte (novembre à janvier) et la mue annuelle.</p>
+                </div>
+            </div>
+
+            <!-- Results Panel -->
+            <div class="lg:col-span-6 bg-foret-900 text-white p-6 sm:p-8 rounded-3xl card-shadow space-y-6">
+                <h3 class="font-serif text-xl font-bold text-bois-100 border-b border-foret-800 pb-3 flex items-center gap-2">
+                    <i class="fa-solid fa-chart-pie text-terracotta-500"></i> Résultats Estimés
+                </h3>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <!-- Result 1 -->
+                    <div class="bg-foret-800/80 p-4 rounded-2xl border border-foret-800 text-center space-y-1">
+                        <span class="text-[11px] uppercase tracking-wider text-sauge-200 font-medium">Production Annuelle</span>
+                        <div id="resYearEggs" class="font-serif text-3xl font-bold text-white">800</div>
+                        <span class="text-[10px] text-slate-300">œufs frais / an</span>
+                    </div>
+
+                    <!-- Result 2 -->
+                    <div class="bg-foret-800/80 p-4 rounded-2xl border border-foret-800 text-center space-y-1">
+                        <span class="text-[11px] uppercase tracking-wider text-sauge-200 font-medium">Récolte Semaine</span>
+                        <div id="resWeekEggs" class="font-serif text-3xl font-bold text-terracotta-500">15</div>
+                        <span class="text-[10px] text-slate-300">œufs / semaine</span>
+                    </div>
+                </div>
+
+                <!-- Highlight Box: Money Saved -->
+                <div class="bg-gradient-to-br from-terracotta-600 to-terracotta-700 p-5 rounded-2xl text-center space-y-1 text-white shadow-lg">
+                    <span class="text-xs uppercase tracking-wider font-extrabold opacity-90">Équivalent Valeur Magasin Bio</span>
+                    <div id="resValue" class="font-serif text-4xl font-extrabold">360,00 €</div>
+                    <span class="text-xs opacity-80">d'économie annuelle sur votre panier de courses</span>
+                </div>
+
+                <!-- Bonus Impact Section -->
+                <div class="space-y-3 pt-2 text-xs">
+                    <h4 class="font-bold text-sauge-200 uppercase tracking-wider text-[11px]">Impact Écologique Gratuit :</h4>
+                    <div class="flex items-center gap-3 bg-foret-800/50 p-3 rounded-xl border border-foret-800">
+                        <i class="fa-solid fa-trash-can-arrow-up text-xl text-sauge-200"></i>
+                        <div>
+                            <span class="font-bold text-white block">~<span id="resWaste">60</span> kg de déchets réduits</span>
+                            <span class="text-slate-400">Épluchures et restes de repas revalorisés par an.</span>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-3 bg-foret-800/50 p-3 rounded-xl border border-foret-800">
+                        <i class="fa-solid fa-seedling text-xl text-sauge-200"></i>
+                        <div>
+                            <span class="font-bold text-white block">~<span id="resCompost">40</span> kg d'engrais naturel</span>
+                            <span class="text-slate-400">Fumier riche en azote pour votre potager bio.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-foret-900 text-bois-100 py-12 border-t border-foret-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-8 text-xs">
+            <div class="space-y-3">
+                <div class="flex items-center gap-2">
+                    <div class="w-8 h-8 rounded-xl bg-terracotta-600 text-white flex items-center justify-center">
+                        <i class="fa-solid fa-feather-pointed"></i>
+                    </div>
+                    <span class="font-serif font-bold text-lg text-white">Mon Poulailler Bio</span>
+                </div>
+                <p class="text-slate-400">Guide indépendant et comparatif d'équipements écologiques pour l’élevage avicole familial.</p>
+            </div>
+            <div>
+                <h4 class="font-bold text-white uppercase tracking-wider mb-3">Navigation</h4>
+                <ul class="space-y-2 text-slate-300">
+                    <li><a href="index.html" class="hover:text-amber-300 transition">Accueil</a></li>
+                    <li><a href="comparatif.html" class="hover:text-amber-300 transition">Comparateur &amp; Tests</a></li>
+                    <li><a href="sante.html" class="hover:text-amber-300 transition">Santé Naturelle</a></li>
+                    <li><a href="calculateur.html" class="hover:text-amber-300 transition">Calculateur d'Œufs</a></li>
+                    <li><a href="a-propos.html" class="hover:text-amber-300 transition">À Propos</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold text-white uppercase tracking-wider mb-3">Engagements</h4>
+                <ul class="space-y-2 text-slate-300">
+                    <li>100% Indépendant</li>
+                    <li>Tests en conditions réelles</li>
+                    <li>Mises à jour fréquentes</li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold text-white uppercase tracking-wider mb-3">Mentions</h4>
+                <p class="text-slate-400 leading-relaxed">© 2026 Mon Poulailler Bio. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Logic Script -->
+    <script>
+        function toggleMobileMenu() {
+            document.getElementById('mobileMenu').classList.toggle('hidden');
+        }
+
+        function updateCalculator() {
+            const hens = parseInt(document.getElementById('henCount').value);
+            const breedYield = parseInt(document.getElementById('breedType').value);
+            const price = parseFloat(document.getElementById('eggPrice').value);
+
+            // UI Label updates
+            document.getElementById('henCountVal').textContent = hens + (hens > 1 ? ' poules' : ' poule');
+            document.getElementById('eggPriceVal').textContent = price.toFixed(2) + ' €';
+
+            // Calculations
+            const totalYearEggs = hens * breedYield;
+            const avgWeekEggs = Math.round(totalYearEggs / 52);
+            const totalSavings = totalYearEggs * price;
+            const wasteReduced = hens * 15; // ~15kg per hen/year
+            const compostProduced = hens * 10; // ~10kg per hen/year
+
+            // Display updates
+            document.getElementById('resYearEggs').textContent = totalYearEggs.toLocaleString('fr-FR');
+            document.getElementById('resWeekEggs').textContent = avgWeekEggs;
+            document.getElementById('resValue').textContent = totalSavings.toFixed(2).replace('.', ',') + ' €';
+            document.getElementById('resWaste').textContent = wasteReduced;
+            document.getElementById('resCompost').textContent = compostProduced;
+        }
+
+        // Init on load
+        window.addEventListener('DOMContentLoaded', updateCalculator);
+    </script>
+</body>
+</html>
